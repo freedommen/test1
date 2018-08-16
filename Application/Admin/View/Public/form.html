@@ -1,0 +1,321 @@
+<extend name="Public/base"/>
+<block name="body">
+	<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/static/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/static/ueditor/ueditor.all.js"></script>
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>{$title}</h2>
+	</div>
+	<script type="text/javascript">
+		function uploadPicture(file, data){
+			var data = $.parseJSON(data);
+			var src = '';
+			console.log(data);
+		    if(data.status){
+		    	$("#"+data.name).val(data.id);
+		    	src = data.url;
+		    	$("#"+data.name).parent().find('.upload-img-box').html(
+		    		'<div class="upload-pre-item"><img width="200px" src="' + src + '"/></div>'
+		    	);
+		    	/* 修改返回给后台图片路径  */
+		    	if( img_path ){
+		    		$("#"+data.name).val(data.save_path);
+		    	}
+		    } else {
+		    	updateAlert(data.info);
+		    }
+		}
+		var name = "";
+		var img_path = "";
+		var edit_id = '';
+	</script>
+	<style>
+	th{width: 100px;padding-right: 10px;}
+	th, td{padding-bottom: 5px;}
+	</style>
+	<if condition="isset( $_GET['id'] ) && $_GET['id']">
+		<div class='panel-heading'>
+			<div class='fl'><button onclick="javascript:history.back(-1);return false;" class="btn btn-default return-btn">返 回</button></div>
+		</div>
+	</if>
+	<!-- 搜索功能 -->
+<if condition="$options">
+	<div class="panel panel-default">
+		<div class='panel-heading'>
+			<div class="fl">
+					<div id="search_btn" class="btn btn-default">搜索</div>
+					<a href="" class="btn btn-default">重置搜索</a>
+					<div id="search" style="display:none">
+						<form class="col-lg-6 search-form" method="post" action="{:U()}">
+							<volist name="options" id="vo">
+								<div class="form-group">
+									<label class="item-label">{$vo.title}<if condition="isset( $vo.comment )"><span class="check-tips">（{$vo.comment}）</span></if></label>
+									<switch name="vo.type">
+										<case value="input">
+											<input class="form-control {$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}" value="{$vo.value|default=''}" type="input">
+										</case>
+										<case value="checkbox">
+											<div>
+												<volist name="vo.list" id="v">
+													<label style="display:inline-block;padding-right:10px;padding-bottom:10px">
+														<if condition="$vo['value'][$v['value']]">  
+															<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}][]" value="{$v.value}" type="checkbox" checked="checked" />{$v.title}
+														<else/>
+															<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}][]" value="{$v.value}" type="checkbox" />{$v.title}
+														</if>
+													</label>
+										    	</volist>
+									    	</div>
+										</case>
+										<case value="radio">
+											<div>
+												<volist name="vo.list" id="v">
+													<label style="display:inline-block;padding-right:10px;padding-bottom:10px">
+														<if condition="$v['value'] eq $vo['value']">  
+															<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}" value="{$v.value}" type="radio" checked="checked" />{$v.title}
+														<else/>
+															<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}" value="{$v.value}" type="radio" />{$v.title}
+														</if>
+													</label>
+												</volist>
+											</div>
+										</case>
+										<case value="select">
+											<select class="form-control {$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}" t-url="{$vo.url|default=''}">
+												<volist name="vo.list" id="v">
+													<option value="{$v.value}" <if condition="$v.value eq $vo.value "> selected = "selected" </if> >{$v.title}</option>
+									    		</volist>
+											</select>
+											
+											<?php if( isset($vo['select_sub']) && $vo['select_sub'] ) { ?>
+												<select class="form-control {$vo.select_sub.class}" id="{$vo.select_sub.id}" name="{$vo.select_sub.name}">
+													<volist name="vo.select_sub.list" id="sv">
+														<option value="{$sv.value}" <?php if( $sv['value'] == $vo['select_sub']['value'] ) { echo 'selected = "selected"'; } ?> >{$sv.title}</option>
+													</volist>
+												</select>
+											<?php } ?>
+										</case>
+										<default />
+									</switch>
+								</div>
+				            </volist>
+				            <div>
+				                <input type="submit" class="btn btn-default" value="搜索">
+				            </div>
+						</form>
+						<div style="clear:both"></div>
+						<div id="search-result"></div>
+					</div>	
+			</div>
+		</div>
+</if>
+
+	<!-- 数据列表 -->
+	<div class="data-table">
+		<form role="form" class="form col-lg-6" method="post" action="{$saveUrl}">
+			<table style="width:100%">
+			<volist name="list" id="vo">
+				<if condition="$vo['type'] neq 'hidden'">
+					<tr>
+						<th valign="top">{$vo.title}</th>
+						<td>
+            		<switch name="vo.type">
+						<case value="input">
+							<input class="form-control {$vo.class|default=''}" id="{$vo.id|default=''}" name="data[{$vo.name}]" value="{$vo.value|default=''}" type="input">
+						</case>
+						<case value="checkbox">
+							<div>
+								<volist name="vo.list" id="v">
+									<label style="display:inline-block;padding-right:10px;padding-bottom:10px">
+										<if condition="$vo['value'][$v['value']]">  
+											<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="data[{$vo.name}][]" value="{$v.value}" type="checkbox" checked="checked" />{$v.title}
+										<else/>
+											<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="data[{$vo.name}][]" value="{$v.value}" type="checkbox" />{$v.title}
+										</if>
+									</label>
+						    	</volist>
+					    	</div>
+						</case>
+						<case value="radio">
+							<div>
+								<volist name="vo.list" id="v">
+									<label style="display:inline-block;padding-right:10px;padding-bottom:10px">
+										<if condition="$v['value'] eq $vo['value']">  
+											<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="data[{$vo.name}]" value="{$v.value}" type="radio" checked="checked" />{$v.title}
+										<else/>
+											<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="data[{$vo.name}]" value="{$v.value}" type="radio" />{$v.title}
+										</if>
+									</label>
+						    	</volist>
+					    	</div>
+						</case>
+					    <case value="textarea">
+							<textarea class="form-control {$vo.class|default=''}" id="{$vo.id|default=''}" name="data[{$vo.name}]" rows="10">{$vo.value}</textarea>
+					    </case>
+					    <case value="select">
+					    	<select class="form-control {$vo.class|default=''}" id="{$vo.id|default=''}" name="data[{$vo.name}]" t-url="{$vo.url|default=''}">
+					    		<volist name="vo.list" id="v">
+					    			<option value="{$v.value}" <if condition="$v.value eq $vo.value "> selected = "selected" </if> >{$v.title}</option>
+					    		</volist>							    		
+					    	</select>
+					    	
+					    	<?php if( isset($vo['select_sub']) && $vo['select_sub'] ) { ?>
+						    	<select class="form-control {$vo.select_sub.class}" id="{$vo.select_sub.id}" name="data[{$vo.select_sub.name}]">
+						    		<volist name="vo.select_sub.list" id="sv">
+						    			<option value="{$sv.value}" <?php if( $sv['value'] == $vo['select_sub']['value'] ) { echo 'selected = "selected"'; } ?> >{$sv.title}</option>
+						    		</volist>							    		
+						    	</select>
+						    <?php } ?>
+					    </case>
+					    <case value="img">
+					    	<input type="file" id="upload_picture_{$vo.name}" class="btn btn-default btn-default">
+							<input type="hidden" name="data[{$vo.name}]" id="{$vo.name}" value="{$vo.value|default=''}"/>
+							<div class="upload-img-box">
+								<notempty name="vo['value']">
+									<div style="width:200px" class="upload-pre-item"><img style="width:100%" src="{$vo.url}"/></div>
+								</notempty>
+							</div>
+							<script type="text/javascript">
+								//上传图片
+								name = "{$vo['name']}";
+								img_path = "{$vo['path']}";
+							    /* 初始化上传插件 */
+								$("#upload_picture_"+name).uploadify({
+							        "height"          : 30,
+							        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+							        "fileObjName"     : "download",
+							        "buttonText"      : "上传图片",
+							        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id(),'name'=>$vo['name'],'table'=>'question'))}",
+							        "width"           : 120,
+							        'removeTimeout'	  : 1,
+							        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+							        "onUploadSuccess" : uploadPicture,
+							        "onFallback"      : function() {
+							            alert('未检测到兼容版本的Flash.');
+							        }
+							    });
+							</script>
+					    </case>
+					    <case value="edit">
+					    	<!-- 加载编辑器的容器 -->
+							<script id="{$vo.name}" name="data[{$vo.name}]" type="text/plain">{$vo.value}</script>
+							<script type="text/javascript">
+								edit_id = "{$vo.name}";
+							    UE.getEditor(edit_id,{height:'1000PX'});
+							</script>
+					    </case>
+						<default />
+					</switch>
+				    <if condition=" isset( $vo['img'] ) && $vo['img'] ">
+				    	<input type="file" id="upload_picture_{$vo.img.name}" class="btn btn-default btn-default">
+						<input type="hidden" name="data[{$vo.img.name}]" id="{$vo.img.name}" value="{$vo.img.value|default=''}"/>
+						<div class="upload-img-box">
+							<notempty name="vo['img']['value']">
+								<div style="width:200px" class="upload-pre-item"><img style="width:100%" src="{$vo.img.url}"/></div>
+							</notempty>
+						</div>
+						<script type="text/javascript">
+							//上传图片
+							name = "{$vo.img.name}";
+							title = "{$vo.title}";
+						    /* 初始化上传插件 */
+							$("#upload_picture_"+name).uploadify({
+						        "height"          : 30,
+						        "swf"             : "__STATIC__/uploadify/uploadify.swf",
+						        "fileObjName"     : "download",
+						        "buttonText"      : title+"上传图片",
+						        "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id(),'name'=>$vo['img']['name']))}",
+						        "width"           : 120,
+						        'removeTimeout'	  : 1,
+						        'fileTypeExts'	  : '*.jpg; *.png; *.gif;',
+						        "onUploadSuccess" : uploadPicture,
+						        "onFallback"      : function() {
+						            alert('未检测到兼容版本的Flash.');
+						        }
+						    });  
+						</script>
+				    </if>
+				</div>
+					<if condition="isset( $vo.comment )"><span class="check-tips">（{$vo.comment}）</span></if></td></tr>
+				<else/>
+					<input class="form-control {$vo.class|default=''}" id="{$vo.id|default=''}" name="data[{$vo.name}]" value="{$vo.value|default=''}" type="hidden" />
+				</if>
+            </volist></table>
+            <div class="form-group">
+                <input type="hidden" value="{$id}" name="id">
+                <button target-form="form" type="submit" id="submit" class="btn btn-default submit-btn ajax-post">确 定</button>
+                <button onclick="javascript:history.back(-1);return false;" class="btn btn-default return-btn">返 回</button>
+            </div>
+		</form>
+	</div>
+</block>
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	$("#action_add").click(function(){
+		window.location.href = $(this).attr('url');
+	})
+})
+var attr_id = '';
+$('select').change(function(){
+	var url = $(this).attr('t-url');
+	var id = $(this).find('option:selected').val();
+
+	if( url && id != 0 ){
+		attr_id = $(this).attr('id');
+		$.get( 
+			url,
+			{id:id},
+			function(data){
+				console.log(data.data)
+	            if (data.status==1) {
+	            	var str = "<option value='0'>请选择</option>";
+	                for (var i = 0; i < data.data.length; i++) {
+	                	str = str + "<option value='"+data.data[i].id+"'>"+data.data[i].title+"</option>";
+	                };
+	                $('#'+attr_id+'_sub').html(str);
+	            }else{
+	                updateAlert(data.info);
+	                setTimeout(function(){
+	                    if (data.url) {
+	                        location.href=data.url;
+	                    }else{
+	                        $('#top-alert').find('button').click();
+	                    }
+	                },1500);
+	            }
+        	},
+        	'json'
+        );
+	} else if( url ) {
+		var str = "<option value='0'>请选择</option>";
+        $('#'+attr_id+'_sub').html(str);
+	}
+});
+
+$('#search_btn').click(function(){
+	$('#search').toggle();
+	$('#search_btn').hide();
+});
+
+/* 搜索 */
+$("form").submit(function(e){
+    e.preventDefault();
+    $.ajax({
+	   type : "POST",
+	   url  : $("form.search-form").attr('action'),
+	   data : $("form.search-form").serialize(),// 要提交的表单
+	   success: function(msg) {
+	   		var _html = '<table class="table"><thead><tr><th>ID</th><th>用户昵称</th><th>手机号</th></tr></thead>';
+	   		$(msg).each(function(){
+	   			_html += "<tr><td>"+this.user_id+"</td><td>"+this.nickname+"</td><td>"+this.mobile+"</td></tr>";
+	   		});
+	   		_html += "</table>";
+	   		$('#search-result').html(_html);
+	   },
+	});
+});
+</script>
+</block>

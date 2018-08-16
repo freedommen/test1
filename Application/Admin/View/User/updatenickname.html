@@ -1,0 +1,25 @@
+<extend name="Public/map"/>
+
+<block name="body">
+    <section class="jqgl">
+        <form action="{:U('User/submitNickname')}" method="post" role="form" class="form " style="width:100%;">
+            <input type="hidden" name="uid" value='{$uid}'/>
+            <div class="input-area input-long">
+				<span class="area-icon">密码</span> 
+				<input type="password" name="password" class="form-control" autocomplete="off" /> 
+			</div>
+			<div class="input-area input-long">
+				<span class="area-icon">昵称</span> 
+				<input type="text" name="nickname" class="form-control" autocomplete="off" value="{$nickname}"/> 
+			</div>
+            <div class="btn-area">
+                <input class="ajax-post" type="submit" target-form="form" value="保 存"/>
+                <input type="button" onclick="javascript:history.back(-1);return false;" value="返 回"/>
+            </div>
+        </form>
+    </section>
+</block>
+
+<block name="script">
+<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+</block>

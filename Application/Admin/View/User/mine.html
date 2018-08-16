@@ -1,0 +1,51 @@
+<extend name="Public/map" />
+<block name="body">
+    <div class="device-condition">
+        <input type="button" url="{:U('User/addData')}" id="add-group" class="btn btn-default btn-add " value="新增"/>
+        <input type="button" url="{:U('User/changeStatus',array('method'=>'resumeUser'))}" class="btn btn-default ajax-post confirm" target-form="ids" value="启用"/>
+        <input type="button" url="{:U('User/changeStatus',array('method'=>'forbidUser'))}" class="btn btn-default ajax-post confirm" target-form="ids" value="禁用"/>
+        <input type="button" url="{:U('User/changeStatus',array('method'=>'deleteUser'))}" class="btn btn-default ajax-post confirm" target-form="ids" value="删除"/> 
+    </div>
+    <table class="device-list">
+        <thead>
+            <tr>                    
+                <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+                <th class="">UID</th>
+                <th class="">昵称</th>
+                <th class="">登录次数</th>
+                <th class="">最后登录时间</th>
+                <th class="">最后登录IP</th>
+                <th class="">状态</th>
+                <th class="">操作</th>        
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="_list" id="vo">
+            <tr>
+                <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+                <td>{$vo.id} </td>
+                <td>{$vo.nickname}</td>
+                <td>{$vo.login}</td>
+                <td><span><if condition="$vo.last_login_time gt 0">{$vo.last_login_time|time_format}<else/>暂未登录</if></span></td>
+                <td><span>{:long2ip($vo['last_login_ip'])}</span></td>
+                <td>{$vo.status_text}</td>
+                <td><eq name="vo.status" value="1">
+                    <a href="{:U('User/changeStatus?method=forbidUser&id='.$vo['id'])}" class="ajax-get confirm">禁用</a>
+                    <else/>
+                    <a href="{:U('User/changeStatus?method=resumeUser&id='.$vo['id'])}" class="ajax-get confirm">启用</a>
+                    </eq>
+                    <a href="{:U('AuthManager/group?uid='.$vo['id'])}" class="authorize">授权</a>
+                    <a href="{:U('User/updatePassword?uid='.$vo['id'])}" class="authorize">修改密码</a>
+                    <a href="{:U('User/updateNickname?uid='.$vo['id'])}" class="authorize">修改昵称</a>
+                    <a href="{:U('User/changeStatus?method=deleteUser?id='.$vo['id'])}" class="confirm ajax-get">删除</a>
+                    </td>
+            </tr>
+            </volist>
+        </tbody>
+    </table>
+    <neq name="_page" value="">
+    <div class="page">
+        {$_page|default=''}
+    </div> 
+    </neq>
+</block>

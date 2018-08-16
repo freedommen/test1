@@ -1,0 +1,272 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>{$title}</h2>
+	</div>
+
+	<!-- 数据列表 -->
+	<div class="panel panel-default">
+		<div class='panel-heading'>
+			<div class="fl">
+				<if condition="$button['add']">
+					<button class="btn btn-default btn-add " url="{$button['add']}" >新 增</button>
+				</if>
+				<if condition="$button['output']">
+					<a class="btn btn-default " href="{$button['output']}" >导 出</a>
+				</if>
+				<if condition="$button['del']">
+					<button class="btn btn-default ajax-post confirm" url="{$button['del']}" target-form="ids">删 除</button>
+				</if>
+				<if condition="$options">
+					<div id="search_btn" class="btn btn-default">搜索</div>
+					<a href="{$redirect|default=U()}" class="btn btn-default">重置搜索</a>
+					<div id="search" style="display:none">
+						<form class="col-lg-6" method="post" action="{:U()}">
+							<volist name="options" id="vo">
+								<div class="form-group">
+									<label class="item-label">{$vo.title}<if condition="isset( $vo.comment )"><span class="check-tips">（{$vo.comment}）</span></if></label>
+									<switch name="vo.type">
+										<case value="input">
+											<input class="form-control {$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}" value="{$vo.value|default=''}" type="input">
+										</case>
+										<case value="checkbox">
+											<div>
+												<volist name="vo.list" id="v">
+													<label style="display:inline-block;padding-right:10px;padding-bottom:10px">
+														<if condition="$vo['value'][$v['value']]">  
+															<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}][]" value="{$v.value}" type="checkbox" checked="checked" />{$v.title}
+														<else/>
+															<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}][]" value="{$v.value}" type="checkbox" />{$v.title}
+														</if>
+													</label>
+										    	</volist>
+									    	</div>
+										</case>
+										<case value="radio">
+											<div>
+												<volist name="vo.list" id="v">
+													<label style="display:inline-block;padding-right:10px;padding-bottom:10px">
+														<if condition="$v['value'] eq $vo['value']">  
+															<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}" value="{$v.value}" type="radio" checked="checked" />{$v.title}
+														<else/>
+															<input style="margin-right:5px" class="{$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}" value="{$v.value}" type="radio" />{$v.title}
+														</if>
+													</label>
+												</volist>
+											</div>
+										</case>
+										<case value="select">
+											<select class="form-control {$vo.class|default=''}" id="{$vo.id|default=''}" name="{$vo.name}" t-url="{$vo.url|default=''}">
+												<volist name="vo.list" id="v">
+													<option value="{$v.value}" <if condition="$v.value eq $vo.value "> selected = "selected" </if> >{$v.title}</option>
+									    		</volist>
+											</select>
+											
+											<?php if( isset($vo['select_sub']) && $vo['select_sub'] ) { ?>
+												<select class="form-control {$vo.select_sub.class}" id="{$vo.select_sub.id}" name="{$vo.select_sub.name}">
+													<volist name="vo.select_sub.list" id="sv">
+														<option value="{$sv.value}" <?php if( $sv['value'] == $vo['select_sub']['value'] ) { echo 'selected = "selected"'; } ?> >{$sv.title}</option>
+													</volist>
+												</select>
+											<?php } ?>
+										</case>
+										<default />
+									</switch>
+								</div>
+				            </volist>
+				            <div>
+				                <input type="submit" class="btn btn-default" value="搜索">
+				            </div>
+						</form>
+						<div style="clear:both"></div>
+					</div>
+				</if>
+				<if condition="$list['count']">
+					<div style="text-align:right">
+						<ul class="pagination" style="margin:5px 0;">
+							<li class="paginate_button disabled">
+								<a href="#">{$list['total']}条数</a>
+							</li>
+							<if condition="1 eq $list['page'] || $list['count'] eq 1">
+								<li class="paginate_button disabled">
+									<a href="#">首页</a>
+								</li>
+							<else/>
+								<li class="paginate_button">
+									<a href="{:U('', $search)}/page/1">首页</a>
+								</li>
+							</if>
+							<for start="1" end="$list['count']+1">
+								<?php if( $list['page'] == $i || $list['count'] == 1) { ?>
+									<li class="paginate_button active" ><a href="#">{$i}</a></li>
+								<?php } else if ( $i <= ( $list['page'] + 5 ) && $i >= ( $list['page'] - 5 ) ) { ?>
+									<li class="paginate_button" ><a href="{:U('', $search)}/page/{$i}">{$i}</a></li>
+								<?php }?>
+							</for>
+							<if condition="$list['count']  gt $list['page'] + 5">
+								<li class="paginate_button" ><a href="#">.....</a></li>
+									
+								</li>
+							</if>
+							<if condition="$list['count'] eq $list['page'] || $list['count'] eq 1">
+								<li class="paginate_button disabled">
+									<a href="#">尾页</a>
+								</li>
+							<else/>
+								<li class="paginate_button">
+									<a href="{:U('', $search)}/page/{$list['count']}">尾页</a>
+								</li>
+							</if>
+						</ul>
+					</div>
+				</if>
+			</div>
+		</div>
+		<table id="{$id|default=''}" class="table table-striped table-bordered table-hover dataTables">
+		    <thead>
+		        <tr>
+		        	<if condition="$button['del']">
+						<th style="width:3%" class="row-selected">
+							<input class="checkbox check-all" type="checkbox">
+						</th> 
+					</if>
+		        	<volist name='field' id='v'>
+						<th width="{$v.width}%">{$v.title}</th>
+			    	</volist>
+			    	<if condition=" $url ">
+						<th width="100"><div class="div7">操作</div></th>
+					</if>
+				</tr>
+		    </thead>
+		    <body>
+		    	<if condition=" $list['count'] ">
+			    	<volist name='list["data"]' id='vo'>
+			    		<tr>
+							<if condition="$button['del']">
+								<td><input class="ids row-selected" type="checkbox" name="id[]" value="{$vo[$index]}"></td>
+							</if>
+					    	<volist name='field' id='v'>
+								<td><div style="max-height: 200px;overflow-y: auto;">{$vo[$v['name']]}</div></td>
+					    	</volist>
+					    	<if condition="$url">
+					    		<td>
+						    		<volist name='url' id='u'>
+										<a href="{:U($u['url'], array('id'=>$vo[$index]))}">{$u.title}</a>&nbsp;&nbsp;&nbsp;
+							    	</volist>
+						    	</td>
+					    	</if>
+				    	</tr>
+			    	</volist>
+		    	<else/>
+		    		<volist name='list' id='vo'>
+			    		<tr>
+			    			<if condition="$delbutton">
+								<td><input class="ids row-selected" type="checkbox" name="id[]" value="{$vo[$index]}"></td>
+							</if>
+					    	<volist name='field' id='v'>
+								<td><div style="max-height: 200px;overflow-y: auto;">{$vo[$v['name']]}</div></td>
+					    	</volist>
+					    	<if condition="$url">
+					    		<td>
+						    		<volist name='url' id='u'>
+										<a href="{:U($u['url'], array('id'=>$vo[$index]))}">{$u.title}</a>&nbsp;&nbsp;&nbsp;
+							    	</volist>
+						    	</td>
+					    	</if>
+				    	</tr>
+			    	</volist>
+		    	</if>
+		    </body>
+	    </table>
+		<if condition="$list['count']">
+			<div class='panel-heading' style="text-align:right;border-top:#ddd 1px solid">
+				<ul class="pagination" style="margin:5px 0;">
+					<if condition="1 eq $list['page'] || $list['count'] eq 1">
+						<li class="paginate_button disabled">
+							<a href="#">首页</a>
+						</li>
+					<else/>
+						<li class="paginate_button">
+							<a href="{:U('', $search)}/page/1">首页</a>
+						</li>
+					</if>
+					<for start="1" end="$list['count']+1">
+						<?php if( $list['page'] == $i  || $list['count'] == 1) { ?>
+							<li class="paginate_button active" ><a href="#">{$i}</a></li>
+						<?php } else if ( $i <= ( $list['page'] + 5 ) && $i >= ( $list['page'] - 5 ) ) { ?>
+							<li class="paginate_button" ><a href="{:U('', $search)}/page/{$i}">{$i}</a></li>
+						<?php }?>
+					</for>
+					<if condition="$list['count']  gt $list['page'] + 5">
+						<li class="paginate_button" ><a href="#">.....</a></li>
+							
+						</li>
+					</if>
+					<if condition="$list['count'] eq $list['page'] || $list['count'] eq 1">
+						<li class="paginate_button disabled">
+							<a href="#">尾页</a>
+						</li>
+					<else/>
+						<li class="paginate_button">
+							<a href="{:U('', $search)}/page/{$list['count']}">尾页</a>
+						</li>
+					</if>
+				</ul>
+			</div>
+		</if>
+	    <style>
+	    	.div0,.div7{width: 50px;}
+	    	.div1,.div2,.div3,.div4{width: 80px;}
+	    </style>
+</block>
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	$("#action_add").click(function(){
+		window.location.href = $(this).attr('url');
+	})
+})
+var attr_id = '';
+$('select').change(function(){
+	var url = $(this).attr('t-url');
+	var id = $(this).find('option:selected').val();
+
+	if( url && id != 0 ){
+		attr_id = $(this).attr('id');
+		$.get( 
+			url,
+			{id:id},
+			function(data){
+	            if (data.status==1) {
+	            	var str = "<option value='0'>请选择</option>";
+	                for (var i = 0; i < data.data.length; i++) {
+	                	str = str + "<option value='"+data.data[i].id+"'>"+data.data[i].title+"</option>";
+	                };
+	                $('#'+attr_id+'_sub').html(str);
+	            }else{
+	                updateAlert(data.info);
+	                setTimeout(function(){
+	                    if (data.url) {
+	                        location.href=data.url;
+	                    }else{
+	                        $('#top-alert').find('button').click();
+	                    }
+	                },1500);
+	            }
+        	},
+        	'json'
+        );
+	} else if( url ) {
+		var str = "<option value='0'>请选择</option>";
+        $('#'+attr_id+'_sub').html(str);
+	}
+});
+$('#search_btn').click(function(){
+	$('#search').toggle();
+	$('#search_btn').hide();
+});
+
+</script>
+</block>

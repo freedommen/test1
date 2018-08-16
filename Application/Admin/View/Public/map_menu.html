@@ -1,0 +1,20 @@
+<block name="side">	
+<aside>
+<ul class="main-nav">
+<volist name="__MENU__.child" id="sub_menu" key='k'>          
+	<notempty name="sub_menu">
+		<li class="main-nav-item <if condition="$sub_menu['class'] eq 'on'">bjxs</if>">
+			<a href="javascript:;"><img src='__IMG__/icon/{$k-1}.png'>{$sub_menu['name']}</a>
+		</li>
+		<div class="main-nav-list" <if condition="$sub_menu['class'] eq 'on'">style="display:block"</if> >
+			<volist name="sub_menu.data" id="menu">
+				<if condition="$menu.hide eq 0">
+				<li <if condition="$menu['class'] eq 'on'">class="active"</if>><a href="{$menu.url|U}">&nbsp;&nbsp;{$menu.title}</a></li>
+				</if>
+			</volist>
+		</div>
+	</notempty>
+</volist>
+</ul>
+</aside>
+</block>

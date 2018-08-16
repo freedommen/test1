@@ -1,0 +1,18 @@
+<nav class="clearfix">
+<div class="logo">
+	<h2 class="color-1 logo-text">景区综合管理系统</h2>
+	<span>Web</span>
+</div>
+<ul class="nav-list">
+    <volist name="__MENU__.main" id="menu">
+        <li class="{$menu.class|default=''}"><a href="{$menu.url|U}"><span>{$menu.title}</span></a></li>
+    </volist>
+</ul>
+<div class="account">
+	<span class="user-name">欢迎您，{:get_username()}</span>
+	<a class="account-quit" href="{:U('Public/logout')}" title="退出">
+		<span class="fa fa-sign-out"></span>
+	</a>
+</div>
+<div class="clear clearfix"></div>
+</nav>

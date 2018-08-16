@@ -1,0 +1,102 @@
+.ticket{
+	padding:27px;
+}
+.ticket form{
+	border:1px solid #dcdcdc;
+	padding:22px;
+}
+.ticket form p{
+	margin-bottom: 20px;
+}
+.ticket form input[type="text"]{
+	width:122px;
+	height:26px;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	outline: none;
+	border:1px solid #dcdcdc;
+	margin-right: 15px;
+	text-indent: 18px;
+}
+.ticket form select{
+	width: 89px;
+	height: 30px;
+	line-height: 30px;
+	padding-right: 20px;
+	text-indent: 12px;
+	text-align: left;
+	vertical-align: middle;
+	border: 1px solid #dcdcdc;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline:none;
+	margin-right: 20px;
+	background: url(../img/info-img-1.png) no-repeat right 0;
+}
+.ticket form input[type="button"]{
+	width:70px;
+	height:30px;
+	line-height:30px;
+	margin:0 auto;
+	background: #2579e9;
+	border:none;
+	outline: none;
+	color:#fff;
+	font-size: 16px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.new-ticket{
+	margin-top: 24px;
+}
+.new-ticket a{
+	padding:2px 15px;
+	display: inline-block;
+	background: #2579e9;
+	color:#fff;
+	font-size: 14px;
+	text-align: center;
+	line-height: 26px;
+	border-radius:5px;
+	margin-right:10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.new-ticket a.btn-right{
+	float: right;
+}
+.ticket table{
+	width:100%;
+	margin-top:24px;
+	border-collapse: collapse;
+	border: none;
+	font-size: 14px;
+}
+.ticket table tr{
+	border:1px solid #dcdcdc;
+}
+.ticket table th{
+	background:#f8f8f8;
+	height:52px;
+}
+.ticket table td{
+	text-align: center;
+	height:52px;
+}
+.ticket table td span{
+	display: block;
+}
+.ticket table td img{
+	width:40px;
+	height:40px;
+	margin:0 auto;
+}
+.ticket table td a{
+	color:#2579e9;
+}
+.ticket table td a:hover{
+	text-decoration: underline;
+}

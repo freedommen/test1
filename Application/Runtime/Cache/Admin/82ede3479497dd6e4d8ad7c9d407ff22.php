@@ -1,0 +1,629 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<!--<head>-->
+	<!--<meta charset="UTF-8" />-->
+	<!--<meta name="keywords" content="">-->
+	<!--<meta name="description" content="">-->
+	<!--<title></title>-->
+	<!--<link rel="stylesheet" type="text/css" href="../css/common.css">-->
+	<!--<link rel="stylesheet" type="text/css" href="../css/fuFengStyle.css">-->
+	<!--<link rel="stylesheet" type="text/css" href="../css/newStyle.css">-->
+	<!--<script src="../js/echarts.min.js"></script>-->
+	<!--<script src="../js/china.js"></script>-->
+<!--</head>-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title><?php echo ($meta_title); ?> | 中智尚联</title>
+    <link rel="stylesheet" type="text/css" href="/Application/Admin//Public/Admin/css/font-awesome/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="/Application/Admin//Public/Admin/css/font-awesome-4.7.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" type="text/css" href="/Application/Admin//Public/Admin/css/ffcommon.css">
+    <link rel="stylesheet" type="text/css" href="/Application/Admin//Public/Admin/css/fuFengStyle.css">
+	<!--<link rel="stylesheet" type="text/css" href="/Application/Admin//Public/Admin/css/newStyle.css">-->
+
+    <!-- 百度插件 -->
+    <script src="/Application/Admin//Public/Admin/js/ff/echarts.min.js"></script>
+    <script src="/Application/Admin//Public/Admin/js/ff/china.js"></script>
+
+    <script src="/Application/Admin//Public/Admin/js/ff/jquery.js"></script>
+    <script src="/Application/Admin//Public/Admin/js/ff/common.js"></script>
+    <script src="/Application/Admin//Public/Admin/js/ff/westeros.js"></script>
+</head>
+<link rel="stylesheet" type="text/css" href="/Application/Admin//Public/Admin/css/newStyle.css">
+<body onload="aTim();getComplainData(1);" class="GZHSJbody KLCountBody ZSAnalysisBody">
+<header>
+	<div class="box-top">
+		<!--<h3>旅游大数据平台</h3>-->
+	</div>
+</header>
+	<div class="body-content">
+		
+<div class="nav">
+    <div class="nav-left">
+        <ul class="clearfix" >
+            <?php if(is_array($__MENU__["main"])): $i = 0; $__LIST__ = $__MENU__["main"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="<?php echo ((isset($menu["class"]) && ($menu["class"] !== ""))?($menu["class"]):''); ?>"><a href="<?php echo (u($menu["url"])); ?>"><span><?php echo ($menu["title"]); ?></span></a></li>
+                <!--<li class="active"><a href="javascript:;">数据概况</a></li>-->
+                <!--<li><a href="<?php echo U('Visitor/index');?>">客流统计</a></li>-->
+                <!--<li><a href="<?php echo U('Opinion/index');?>">舆情监测</a></li>-->
+                <!--<li><a href="javascript:;">酒店监测</a></li>-->
+                <!--<li class="clearfix" ><a href="<?php echo U('Wx/index');?>">网络行为</a></li>--><?php endforeach; endif; else: echo "" ;endif; ?>
+        </ul>
+    </div>
+    <div class="nav-right float-right clearfix">
+        <div class="quit-content">
+            <span>|</span>
+            <a href="<?php echo U('Public/logout');?>" class="quit">退出</a>
+        </div>
+        <div class="date-left">
+            <p class="date"><?php echo (date("Y年n月j日",NOW_TIME)); ?></p>
+            <p class="time"><?php echo (date("G:i:s",NOW_TIME)); ?></p>
+            <!--<span class="week">星期三</span>-->
+            <!--<span class="weather"> 晴 ≤3级风 9℃</span>-->
+        </div>
+    </div>
+</div>
+<div><img src="/Application/Admin//Public/Admin/images/ffimg/top-fgx.png"></div>
+		<!--<div class="nav">-->
+			<!--<div class="nav-left">-->
+				<!--<ul class="clearfix">-->
+					<!--<li><a href="../dataProfile.html">数据概况</a></li>-->
+					<!--<li class="active"><a href="javascript:;">数据分析</a></li>-->
+					<!--<li><a href="../publicOpinion.html">舆情监测</a></li>-->
+					<!--<li><a href="../hotel.html">酒店监测</a></li>-->
+					<!--<li><a href="../wlxw.html">网络行为</a></li>-->
+					<!--<li><a href="../passengerFlowForecast.html">客流预测</a></li>-->
+				<!--</ul>-->
+			<!--</div>-->
+			<!--<div class="nav-right float-right clearfix">-->
+				<!--<div class="quit-content">-->
+					<!--<span>|</span>-->
+					<!--<a href="javascript:;" class="quit">退出</a>-->
+				<!--</div>-->
+				<!--<div class="date-left">-->
+					<!--<p class="date">2017年11月29日</p>-->
+					<!--<p class="time">12:03:08</p>-->
+					<!--&lt;!&ndash;<span class="week">星期三</span>&ndash;&gt;-->
+					<!--&lt;!&ndash;<span class="weather"> 晴 ≤3级风 9℃</span>&ndash;&gt;-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
+
+		<div class="main">
+			<div class="secondLevelNav">
+				<ul>
+	<?php if(is_array($__MENU__["child"])): $i = 0; $__LIST__ = $__MENU__["child"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$sub_menu): $mod = ($i % 2 );++$i;?><li>
+			<?php if($sub_menu["class"] != 'on'): ?><a href="<?php echo (u($sub_menu["url"])); ?>"><?php echo ($sub_menu["name"]); ?></a>
+			<?php else: ?>
+				<a href="javascript:;" class="active"><?php echo ($sub_menu["name"]); ?></a><?php endif; ?>
+        </li><?php endforeach; endif; else: echo "" ;endif; ?>
+</ul>
+				<!--<ul>-->
+					<!--<li><a href="<?php echo U('index');?>">客流统计</a></li>-->
+					<!--<li><a href="<?php echo U('getHoliday');?>" >假日客流</a></li>-->
+					<!--<li><a href="<?php echo U('getComplain');?>" class="active">投诉分析</a></li>-->
+					<!--<li><a href="<?php echo U('getConsumption');?>">消费分析</a></li>-->
+					<!--&lt;!&ndash;<li><a href="passengerFlow.html">客流统计</a></li>&ndash;&gt;-->
+					<!--&lt;!&ndash;<li><a href="holidayPassengerFlow.html">假日客流</a></li>&ndash;&gt;-->
+					<!--&lt;!&ndash;<li><a href="accommodationAnalysis.html">住宿分析</a></li>&ndash;&gt;-->
+					<!--&lt;!&ndash;<li><a href="travelAgencySupervision.html">旅行社监管</a></li>&ndash;&gt;-->
+					<!--&lt;!&ndash;<li><a href="javascript:;" class="active">投诉分析</a></li>&ndash;&gt;-->
+					<!--&lt;!&ndash;<li><a href="consumptionAnalysis.html">消费分析</a></li>&ndash;&gt;-->
+				<!--</ul>-->
+			</div>
+
+			<div class="onelineTwo">
+				<ul class="clearfix">
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top">
+								<h4>
+									投诉量统计分析
+								</h4>
+								<p class="clearfix">
+									<span class="active" onclick="getComplainApi(1)">7天</span>
+									<span onclick="getComplainApi(2)">30天</span>
+									<span onclick="getComplainApi(3)">90天</span>
+									<span onclick="getComplainApi(4)">半年</span>
+									<span onclick="getComplainApi(5)">一年</span>
+								</p>
+							</div>
+							<div class="char-plate">
+								<div id="complaintsNum" style="width: 550px; height:350px;"></div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top">
+								<h4>各行业投诉数占比统计</h4>
+								<p class="clearfix">
+									<span class="active" onclick="getTradeApi(1)">7天</span>
+									<span onclick="getTradeApi(2)">30天</span>
+									<span onclick="getTradeApi(3)">90天</span>
+									<span onclick="getTradeApi(4)">半年</span>
+									<span onclick="getTradeApi(5)">一年</span>
+								</p>
+							</div>
+							<div class="char-plate">
+								<div id="industryComplaintRatio" style="width: 550px; height:300px;margin-top: 20px;"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="onelineOne onelineThree">
+				<div class="box-content">
+					<span class="left-top"></span>
+					<span class="right-top"></span>
+					<span class="left-bottom"></span>
+					<span class="right-bottom"></span>
+					<div class="box-content-top clearfix">
+						<h4>客源地分析</h4>
+						<p>
+							<span class="active" onclick="getSource(1)">7天</span>
+							<span onclick="getSource(2)">30天</span>
+							<span onclick="getSource(3)">90天</span>
+							<span onclick="getSource(4)">半年</span>
+							<span onclick="getSource(5)">一年</span>
+						</p>
+					</div>
+					<div class="char-plates">
+						<ul class="clearfix">
+							<li>
+								<div id="provinceTop10" style="width: 380px; height:300px;"></div>
+							</li>
+							<li>
+								<div id="cityTop10" style="width: 380px; height:300px;"></div>
+							</li>
+							<li>
+								<div id="provinceAnalysis" style="width: 380px; height:300px;"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/Application/Admin//Public/Admin/js/ff/jquery.js"></script>
+<script src="/Application/Admin//Public/Admin/js/ff/common.js"></script>
+<script src="/Application/Admin//Public/Admin/js/ff/westeros.js"></script>
+<!--<script src="/Application/Admin//Public/Admin/js/ff/complaintAnalysis.js"></script>-->
+
+</html>	
+<script>
+	function aTim(){
+		var date = new Date();
+		var hours = date.getHours();
+		var min = date.getMinutes();
+		min = min<10?"0"+min:min;
+		var sec = date.getSeconds();
+		sec = sec<10?("0"+sec):sec;
+		$(".date-left .time").text(hours + ":" + min + ":" + sec);
+		setTimeout("aTim()",1000);
+	}
+	$(document).ready(function () {
+		$('.addBtnSpan').click(function () {
+			$('.chose-box').slideToggle(150);
+        });
+		$(".box-content tbody tr").click(function () {
+            $(".box-content tbody tr").removeClass("active");
+			$(this).addClass("active");
+        });
+
+    })
+	//模块选中状态判断
+	$(function(){
+		$(".clearfix span").click(function(){
+			$(this).addClass("active");
+			$(this).siblings().removeClass("active");
+		});
+	});
+	//模块图标数据
+	function getComplainData(s_day) {
+		getComplainApi(s_day);//投诉量统计数据
+		getTradeApi(s_day);//行业投诉量统计数据
+		getProvinceApi(s_day);//投诉客源地省份top10
+		getCityApi(s_day);//投诉客源地城市top10
+		getSource(s_day);//客源地分析
+	}
+	//客源地分析
+	function getSource(s_day){
+		getProvinceApi(s_day);//投诉客源地省份top10
+		getCityApi(s_day);//投诉客源地城市top10
+		getTouristApi(s_day);//外省与本省客源分析
+	}
+	//投诉量统计数据
+	function getComplainApi(s_day){
+		$.get("<?php echo U('getComplainJson');?>",{s_day:s_day},function (res) {
+//			if(res.code ==1){
+				var r =res.data;
+				//投诉量统计分析
+				var complaintsNumChart = echarts.init(document.getElementById('complaintsNum') , 'westeros');
+				option = {
+					legend: {
+						x: 'right',
+						y: 'top',
+						data:['客流']
+					},
+					tooltip: {
+						trigger: "axis"
+					},
+					calculable: true,
+					xAxis: [
+						{
+							type: "category",
+							boundaryGap: false,
+							data:r.s_date,// ["9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20"],
+							splitLine: {
+								"show": false
+							},
+							axisLine: {
+								show: true
+							}
+						}
+					],
+					yAxis: [
+						{
+							name:'投诉量',
+							type: "value",
+							axisLine: {
+								show: true
+							}
+						}
+					],
+					series: [
+						{
+							name: "投诉量",
+							type: "line",
+							smooth: true,
+							data: r.num,//[4, 8, 26, 20, 17, 14, 14, 10, 9],
+							markPoint: {
+								data: [
+									{type: 'max', name: '最大值'}
+								]
+							}
+						}
+					]
+				};
+				complaintsNumChart.setOption(option);
+//			}
+		});
+	}
+	//行业投诉量统计数据
+	function getTradeApi(s_day){
+		$.get("<?php echo U('getTradeJson');?>",{s_day:s_day},function (res) {
+//			if(res.code == 1){
+				var r = res.data;
+				var trade = r.trade ? r.trade :'';
+				var industryComplaintRatioChart = echarts.init(document.getElementById('industryComplaintRatio') , 'westeros');
+				option = {
+					legend: {
+						x: 'right',
+						y: 'top',
+						icon: 'circle',
+						data:r.type,//['景点','购物','OTA','餐饮','旅行社','交通']
+					},
+					tooltip: {
+						trigger: 'item',
+						formatter: "{a}： {b} <br/>投诉量： {c} <br/>占比： {d}%"
+					},
+					series: [
+						{
+							name: '行业',
+							type:'pie',
+							radius: [0, '60%'],
+							center: ['50%', '55%'],
+							avoidLabelOverlap: true,
+							selectedMode: 'single',
+							label: {
+								normal: {
+									formatter: '{b}:  {c}\n{d}%',
+									rich: {
+										b: {
+											fontSize: 20,
+											lineHeight: 20
+										},
+										d: {
+											fontSize: 30,
+											lineHeight: 20
+										}
+									}
+								},
+								emphasis: {
+									show: true,
+									textStyle: {
+										fontSize: '12',
+										fontWeight: 'bold'
+									}
+								}
+							},
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							data:trade,
+//						data:[
+//							{value:5, name:'景点', selected:true},
+//							{value:2, name:'购物'},
+//							{value:3, name:'OTA'},
+//							{value:4, name:'餐饮'},
+//							{value:12, name:'旅行社'},
+//							{value:3, name:'交通'}
+//						]
+						}
+					]
+				};
+				industryComplaintRatioChart.setOption(option);
+//			}
+		});
+	}
+	//客源地省份
+	function getProvinceApi(s_day) {
+		$.get("<?php echo U('getProvince');?>",{s_day:s_day,type:1},function (res) {
+//			if(res.code == 1){
+				var r = res.data;
+				var province = r.province ? r.province :'';
+				var num = r.num ? r.num : '';
+				var ratio = r.ratio ? ratio : '';
+				//投诉客源地省份top10
+				var provinceTop10Chart = echarts.init(document.getElementById('provinceTop10') , 'westeros');
+
+				// 指定图表的配置项和数据
+				option = {
+					title:{
+						text: '投诉客源地省份',
+						textStyle: {
+							fontSize: "12",
+							color: "#77a6ff"
+						}
+					},
+					tooltip : {
+						trigger: 'axis',
+						axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+							type : 'line'        // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis : [
+						{
+							type : 'category',
+							splitLine: {           // 分隔线
+								show: false
+							},
+							data : province,//['省份一', '省份二', '省份三', '省份四', '省份五', '省份六', '省份七', '省份八', '省份九', '省份十'],
+							axisTick: {
+								alignWithLabel: true
+							},
+							axisLabel: {rotate: 50, interval: 0}
+						}
+					],
+					yAxis : [
+						{
+							name:'人数',
+							type : 'value'
+						}
+					],
+					series : [
+						{
+							name:'投诉量',
+							type:'bar',
+							barWidth: '30%',
+							itemStyle:{
+								normal:{
+									barBorderRadius: [30, 30, 0, 0],
+									color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0286de'
+									}, {
+										offset: .8,
+										color: '#992cee'
+									}], false)
+								}
+							},
+							data:num,//[930, 778, 700, 628, 600, 534, 467, 330, 220, 120]
+						},
+						{
+							name:'占比(%)',
+							type:'bar',
+							itemStyle: {
+								normal:{
+									label: {
+										normal: {
+											show: false,
+											position: 'right',
+											distance: 10,
+											formatter: function(param) {
+												return param.value + '%';
+											},
+											textStyle: {
+												color: '#ffffff',
+												fontSize: '16'
+											}
+										}
+									}
+								}
+							},
+							barWidth: '0.000000000000001%',
+							data:ratio,//[ 10.87, 5, 8, 9, 4, 3, 12, 8, 7, 6]
+						}
+					]
+				};
+				provinceTop10Chart.setOption(option);
+//			}
+		});
+	}
+	//客源地城市
+	function getCityApi(s_day) {
+		$.get("<?php echo U('getProvince');?>",{s_day:s_day,type:2},function (res) {
+//			if(res.code == 1){
+				var r = res.data;
+				var province = r.province ? r.province :'';
+				var num = r.num ? r.num : '';
+				var ratio = r.ratio ? ratio : '';
+				//投诉客源地城市top10
+				var cityTop10Chart = echarts.init(document.getElementById('cityTop10') , 'westeros');
+
+				// 指定图表的配置项和数据
+				option = {
+					title:{
+						text: '投诉客源地省份',
+						textStyle: {
+							fontSize: "12",
+							color: "#77a6ff"
+						}
+					},
+					tooltip : {
+						trigger: 'axis',
+						axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+							type : 'line'        // 默认为直线，可选为：'line' | 'shadow'
+						}
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					xAxis : [
+						{
+							type : 'category',
+							splitLine: {           // 分隔线
+								show: false
+							},
+							data :province,//['城市1', '城市2', '城市3', '城市4', '城市5', '城市6', '城市7', '城市8', '城市9', '城市10'],
+							axisTick: {
+								alignWithLabel: true
+							},
+							axisLabel: {rotate: 50, interval: 0}
+						}
+					],
+					yAxis : [
+						{
+							name:'人数',
+							type : 'value'
+						}
+					],
+					series : [
+						{
+							name:'投诉量',
+							type:'bar',
+							barWidth: '30%',
+							itemStyle:{
+								normal:{
+									barBorderRadius: [30, 30, 0, 0],
+									color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+										offset: 0,
+										color: '#0286de'
+									}, {
+										offset: .8,
+										color: '#992cee'
+									}], false)
+								}
+							},
+							data:num,//[930, 778, 700, 628, 600, 534, 467, 330, 220, 120]
+						},
+						{
+							name:'占比(%)',
+							type:'bar',
+							itemStyle: {
+								normal:{
+									label: {
+										normal: {
+											show: false,
+											position: 'right',
+											distance: 10,
+											formatter: function(param) {
+												return param.value + '%';
+											},
+											textStyle: {
+												color: '#ffffff',
+												fontSize: '16'
+											}
+										}
+									}
+								}
+							},
+							barWidth: '0.000000000000001%',
+							data:ratio,//[ 10.87, 5, 8, 9, 4, 3, 12, 8, 7, 6]
+						}
+					]
+				};
+				cityTop10Chart.setOption(option);
+//			}
+		});
+	}
+	//本省与外省
+	function getTouristApi(s_day){
+		$.get("<?php echo U('getTourist');?>",{s_day:s_day},function (res) {
+//			if(res.code == 1){
+				var r = res.data;
+				var local = r.local ? r.local : '';
+				var field = r.field ? r.field : '';
+				//外省与本省投诉客源分析
+				var provinceAnalysisChart = echarts.init(document.getElementById('provinceAnalysis') , 'westeros');
+				option = {
+					tooltip: {
+						trigger: 'item',
+						formatter: "{a}{b} <br/>客流： {c} <br/>占比： {d}%"
+					},
+					title:{
+						text: '外省与本省投诉客源分析',
+						textStyle: {
+							fontSize: "12",
+							color: "#77a6ff"
+						}
+					},
+					series: [
+						{
+							name:'投诉来源：',
+							type:'pie',
+							radius: ['50%', '65%'],
+							center: ['50%', '50%'],
+							avoidLabelOverlap: true,
+							label: {
+								normal: {
+									formatter: "{b}\n{d}%"
+								},
+								emphasis: {
+									show: true,
+									textStyle: {
+										fontSize: '12',
+										fontWeight: 'bold'
+									}
+								}
+							},
+							labelLine: {
+								normal: {
+									show: true
+								}
+							},
+							data:[
+								{value:field, name:'外省'},
+								{value:local, name:'本省'}
+							]
+						}
+					]
+				};
+				provinceAnalysisChart.setOption(option);
+//			}
+		});
+	}
+</script>

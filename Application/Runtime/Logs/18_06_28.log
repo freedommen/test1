@@ -1,0 +1,1584 @@
+[ 2018-06-28T14:03:12+08:00 ] 127.0.0.1 /index.php/Admin/Public/login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Use of undefined constant UC_AUTH_KEY - assumed 'UC_AUTH_KEY' E:\ff.xiaomaiquan.cn\ThinkPHP\Common\functions.php 第 457 行.
+SQL: SHOW COLUMNS FROM `ff_admin` [ RunTime:0.039002s ]
+NOTIC: [8] Use of undefined constant UC_AUTH_KEY - assumed 'UC_AUTH_KEY' E:\ff.xiaomaiquan.cn\Application\Admin\Controller\PublicController.class.php 第 45 行.
+SQL: SELECT * FROM `ff_admin` WHERE ( `username` = 'admin' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_action` [ RunTime:0.028002s ]
+SQL: SELECT * FROM `ff_action` WHERE ( `name` = 'user_login' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: UPDATE `ff_admin` SET `login`=`login`+1,`last_login_time`=1530165791,`last_login_ip`='2130706433' WHERE ( `id` = 1 ) [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: admin_id E:\ff.xiaomaiquan.cn\Application\Admin\Model\AdminUserModel.class.php 第 141 行.
+
+[ 2018-06-28T14:03:14+08:00 ] 127.0.0.1 /index.php/Admin/Index/index.html
+ERR: Redis server went away
+
+[ 2018-06-28T14:39:52+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.004000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.004000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.454026s ]
+
+[ 2018-06-28T14:39:52+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.003000s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.003001s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getCarNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.014000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getcarnumbydate' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(car_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.003000s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.012000s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003001s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.014000s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFrom.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrom' ) LIMIT 1   [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) num,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY user_num desc  [ RunTime:0.014001s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.012001s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.004000s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.002000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.062004s ]
+
+[ 2018-06-28T14:39:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getWeekAvg.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getweekavg' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_stay` [ RunTime:0.002000s ]
+SQL: SELECT avg(avg_day) stay_time FROM `ff_visitor_stay` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `ff_ticket_reservations` [ RunTime:0.002000s ]
+SQL: SELECT avg(day_phase) fix_time FROM `ff_ticket_reservations` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003001s ]
+SQL: SELECT avg(car_stay) car_time FROM `ff_scenic_flow_area` WHERE ( `car_stay` <> 0 ) AND (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.004000s ]
+SQL: SELECT avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003001s ]
+
+[ 2018-06-28T16:09:40+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getCarNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getcarnumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(car_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.003001s ]
+
+[ 2018-06-28T16:09:40+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.003000s ]
+
+[ 2018-06-28T16:09:40+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.016001s ]
+
+[ 2018-06-28T16:09:40+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.004000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.004000s ]
+
+[ 2018-06-28T16:09:41+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.016001s ]
+
+[ 2018-06-28T16:09:41+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.003000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T16:09:41+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.005001s ]
+
+[ 2018-06-28T16:09:41+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getWeekAvg.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getweekavg' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_stay` [ RunTime:0.002000s ]
+SQL: SELECT avg(avg_day) stay_time FROM `ff_visitor_stay` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ff_ticket_reservations` [ RunTime:0.001000s ]
+SQL: SELECT avg(day_phase) fix_time FROM `ff_ticket_reservations` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001001s ]
+SQL: SELECT avg(car_stay) car_time FROM `ff_scenic_flow_area` WHERE ( `car_stay` <> 0 ) AND (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.001000s ]
+SQL: SELECT avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+
+[ 2018-06-28T16:09:41+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002001s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.011000s ]
+
+[ 2018-06-28T16:09:41+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFrom.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrom' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) num,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY user_num desc  [ RunTime:0.012001s ]
+
+[ 2018-06-28T16:09:41+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.013001s ]
+
+[ 2018-06-28T16:09:42+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.005000s ]
+
+[ 2018-06-28T16:24:16+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002001s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.007000s ]
+
+[ 2018-06-28T16:24:16+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getCarNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.003000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getcarnumbydate' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002000s ]
+SQL: SELECT SUM(car_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.002000s ]
+
+[ 2018-06-28T16:24:16+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.003000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T16:24:16+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.004000s ]
+
+[ 2018-06-28T16:24:16+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.012000s ]
+
+[ 2018-06-28T16:24:16+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getWeekAvg.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getweekavg' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_stay` [ RunTime:0.003000s ]
+SQL: SELECT avg(avg_day) stay_time FROM `ff_visitor_stay` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_ticket_reservations` [ RunTime:0.003000s ]
+SQL: SELECT avg(day_phase) fix_time FROM `ff_ticket_reservations` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.000000s ]
+SQL: SELECT avg(car_stay) car_time FROM `ff_scenic_flow_area` WHERE ( `car_stay` <> 0 ) AND (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.008001s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.003000s ]
+SQL: SELECT avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+
+[ 2018-06-28T16:24:17+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.003000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.012001s ]
+
+[ 2018-06-28T16:24:17+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003001s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.014000s ]
+
+[ 2018-06-28T16:24:17+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFrom.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrom' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) num,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY user_num desc  [ RunTime:0.012000s ]
+
+[ 2018-06-28T16:24:17+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.003000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.011001s ]
+
+[ 2018-06-28T16:24:17+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.006000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.004001s ]
+
+[ 2018-06-28T16:24:17+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.004000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.003000s ]
+
+[ 2018-06-28T16:54:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getRealVisitorFlow.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getrealvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_real` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`s_time` FROM `ff_visitor_real` WHERE (  (`s_time` BETWEEN '09' AND '16' ) ) AND ( `s_date` = 20180628 ) GROUP BY s_time  [ RunTime:0.424024s ]
+
+[ 2018-06-28T16:54:53+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorCount.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorcount' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc  [ RunTime:0.004001s ]
+
+[ 2018-06-28T16:55:40+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getCity?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getcity' ) LIMIT 1   [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT `city_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` = 2898 ) GROUP BY city_id  [ RunTime:0.010001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.003000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2899 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2918 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2931 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T16:55:42+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getCity?s_day=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getcity' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001001s ]
+SQL: SELECT `city_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180330' AND '20180627' ) ) AND ( `province_id` = 2898 ) GROUP BY city_id  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.002000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2899 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2918 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2931 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T16:55:43+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getCity?s_day=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getcity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.006000s ]
+SQL: SELECT `city_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20171230' AND '20180627' ) ) AND ( `province_id` = 2898 ) GROUP BY city_id  [ RunTime:0.011001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.003000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2899 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2918 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2931 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T16:55:44+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getCity?s_day=5
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getcity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT `city_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20170628' AND '20180627' ) ) AND ( `province_id` = 2898 ) GROUP BY city_id  [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.003000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2899 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2918 ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2931 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T16:55:45+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getCity?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getcity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT `city_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) AND ( `province_id` = 2898 ) GROUP BY city_id  [ RunTime:0.009001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.004000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2899 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2918 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2931 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T16:55:57+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getRealVisitorFlow.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getrealvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_real` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`s_time` FROM `ff_visitor_real` WHERE (  (`s_time` BETWEEN '09' AND '16' ) ) AND ( `s_date` = 20180628 ) GROUP BY s_time  [ RunTime:0.051003s ]
+
+[ 2018-06-28T16:55:57+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorCount.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.004001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorcount' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc  [ RunTime:0.006001s ]
+
+[ 2018-06-28T16:56:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.002000s ]
+
+[ 2018-06-28T16:56:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getCarNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getcarnumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002000s ]
+SQL: SELECT SUM(car_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.002000s ]
+
+[ 2018-06-28T16:56:01+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.016001s ]
+
+[ 2018-06-28T16:56:01+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.014000s ]
+
+[ 2018-06-28T16:56:01+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFrom.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrom' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) num,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY user_num desc  [ RunTime:0.012001s ]
+
+[ 2018-06-28T16:56:02+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.004001s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.003000s ]
+
+[ 2018-06-28T16:56:02+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.013001s ]
+
+[ 2018-06-28T16:56:02+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.003000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.005000s ]
+
+[ 2018-06-28T16:56:02+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getWeekAvg.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getweekavg' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_stay` [ RunTime:0.001000s ]
+SQL: SELECT avg(avg_day) stay_time FROM `ff_visitor_stay` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_ticket_reservations` [ RunTime:0.001000s ]
+SQL: SELECT avg(day_phase) fix_time FROM `ff_ticket_reservations` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT avg(car_stay) car_time FROM `ff_scenic_flow_area` WHERE ( `car_stay` <> 0 ) AND (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.009001s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.001000s ]
+SQL: SELECT avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+
+[ 2018-06-28T16:56:02+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.005001s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T16:56:03+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.014001s ]
+
+[ 2018-06-28T16:56:03+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.004000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.004000s ]
+
+[ 2018-06-28T16:58:59+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.007000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.007000s ]
+
+[ 2018-06-28T16:58:59+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getCarNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getcarnumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002000s ]
+SQL: SELECT SUM(car_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.002000s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.015001s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.004000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.012001s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.013001s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFrom.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.003001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrom' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) num,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY user_num desc  [ RunTime:0.013001s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001001s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.012000s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.004000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.005000s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.003000s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.006000s ]
+
+[ 2018-06-28T16:59:00+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getWeekAvg.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getweekavg' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_stay` [ RunTime:0.009001s ]
+SQL: SELECT avg(avg_day) stay_time FROM `ff_visitor_stay` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_ticket_reservations` [ RunTime:0.002000s ]
+SQL: SELECT avg(day_phase) fix_time FROM `ff_ticket_reservations` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT avg(car_stay) car_time FROM `ff_scenic_flow_area` WHERE ( `car_stay` <> 0 ) AND (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.001000s ]
+SQL: SELECT avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.003000s ]
+
+[ 2018-06-28T16:59:01+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.003000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T16:59:10+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getRealVisitorFlow.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getrealvisitorflow' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_real` [ RunTime:0.005000s ]
+SQL: SELECT SUM(user_num) num,`s_time` FROM `ff_visitor_real` WHERE (  (`s_time` BETWEEN '09' AND '16' ) ) AND ( `s_date` = 20180628 ) GROUP BY s_time  [ RunTime:0.059003s ]
+
+[ 2018-06-28T16:59:10+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorCount.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorcount' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.006001s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc  [ RunTime:0.005000s ]
+
+[ 2018-06-28T17:13:19+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_config` [ RunTime:0.002000s ]
+SQL: SELECT `type`,`name`,`value` FROM `ff_config` WHERE ( `status` = 1 )  [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.011001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:13:21+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.004001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180330' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.013001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T17:13:23+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20171230' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.015001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.004000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:13:24+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=5
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20170628' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.019001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.002001s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T17:13:25+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T17:13:26+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.002001s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:13:28+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180330' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.015001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T17:13:33+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.010001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.004000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:26:42+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001001s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.003000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:27:00+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getCity?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getcity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT `city_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` = 2898 ) GROUP BY city_id  [ RunTime:0.010001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.002000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2899 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2918 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2931 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:27:03+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvinceIO?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovinceio' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` <> 2898 ) LIMIT 1   [ RunTime:0.010001s ]
+SQL: SELECT SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` = 2898 ) LIMIT 1   [ RunTime:0.009000s ]
+
+[ 2018-06-28T17:27:07+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getRemain?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getremain' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_car_stay` [ RunTime:0.001000s ]
+SQL: SELECT `phase_type`,SUM(vehicle_num) as num FROM `ff_scenic_car_stay` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) GROUP BY phase_type  [ RunTime:0.004000s ]
+SQL: SELECT AVG(car_stay) FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `car_stay` <> 0 ) LIMIT 1   [ RunTime:0.010001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) LIMIT 1   [ RunTime:0.009000s ]
+
+[ 2018-06-28T17:27:12+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getScenic?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getscenic' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT `scenic_id`,SUM(car_num) as num FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_scenic` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_scenic` WHERE ( `id` = 4 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_scenic` WHERE ( `id` = 2 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_scenic` WHERE ( `id` = 3 ) LIMIT 1   [ RunTime:0.003000s ]
+
+[ 2018-06-28T17:27:20+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.003000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.012001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T17:33:24+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.012000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T17:38:18+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.013001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T17:39:14+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.002001s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:39:16+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.016001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT `name` FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.004000s ]
+
+[ 2018-06-28T17:40:00+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.002000s ]
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.002000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.001000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1  
+
+[ 2018-06-28T17:40:09+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.012001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.001000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.000000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1  
+SQL: SELECT hortname name FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.001000s ]
+ERR: 1054:Unknown column 'hortname' in 'field list'
+ [ SQL语句 ] : SELECT hortname name FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1  
+
+[ 2018-06-28T17:40:32+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.005000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.011001s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.007000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:40:35+08:00 ] 127.0.0.1 /index.php/Admin/Scenic/getProvince?s_day=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Scenic/getprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT `province_id`,SUM(car_num) as num FROM `ff_scenic_flow_area` WHERE (  (`s_date` BETWEEN '20180330' AND '20180627' ) ) AND ( `province_id` <> 2898 ) GROUP BY province_id ORDER BY num desc LIMIT 6   [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `ff_area` [ RunTime:0.001000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 1 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 2367 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 3126 ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 3022 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 1709 ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SELECT shortname name FROM `ff_area` WHERE ( `id` = 220 ) LIMIT 1   [ RunTime:0.000000s ]
+
+[ 2018-06-28T17:41:25+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getRealVisitorFlow.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.000000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getrealvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_real` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`s_time` FROM `ff_visitor_real` WHERE (  (`s_time` BETWEEN '09' AND '17' ) ) AND ( `s_date` = 20180628 ) GROUP BY s_time  [ RunTime:0.106006s ]
+
+[ 2018-06-28T17:41:26+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorCount.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorcount' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.006001s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc  [ RunTime:0.003000s ]
+
+[ 2018-06-28T17:41:30+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.003000s ]
+
+[ 2018-06-28T17:41:30+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getCarNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getcarnumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002000s ]
+SQL: SELECT SUM(car_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.002000s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.004000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.012001s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.013000s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFrom.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.003000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrom' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) num,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY user_num desc  [ RunTime:0.011001s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.013001s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.004000s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.003000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) )  [ RunTime:0.002000s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.003000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.003000s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getWeekAvg.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getweekavg' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_stay` [ RunTime:0.003000s ]
+SQL: SELECT avg(avg_day) stay_time FROM `ff_visitor_stay` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_ticket_reservations` [ RunTime:0.007000s ]
+SQL: SELECT avg(day_phase) fix_time FROM `ff_ticket_reservations` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.004001s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT avg(car_stay) car_time FROM `ff_scenic_flow_area` WHERE ( `car_stay` <> 0 ) AND (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.009000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.003001s ]
+SQL: SELECT avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) LIMIT 1   [ RunTime:0.004000s ]
+
+[ 2018-06-28T17:41:31+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.013001s ]
+
+[ 2018-06-28T17:41:32+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180621' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.003000s ]
+
+[ 2018-06-28T17:44:05+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.002000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.005000s ]
+
+[ 2018-06-28T17:44:05+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.006001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.003000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:44:06+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180330' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.005001s ]
+
+[ 2018-06-28T17:44:06+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.003000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180330' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:44:08+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20171230' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.007001s ]
+
+[ 2018-06-28T17:44:08+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.003000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20171230' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:44:08+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=5
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.003000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20170628' AND '20180627' ) ) GROUP BY age_phase  [ RunTime:0.010000s ]
+
+[ 2018-06-28T17:44:09+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=5
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.003000s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20170628' AND '20180627' ) )  [ RunTime:0.001000s ]
+
+[ 2018-06-28T17:44:22+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.004001s ]
+
+[ 2018-06-28T17:44:24+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180330' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.005000s ]
+
+[ 2018-06-28T17:44:25+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001001s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20171230' AND '20180627' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.008000s ]
+
+[ 2018-06-28T17:44:58+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=2
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180529' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.006000s ]
+
+[ 2018-06-28T17:45:12+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=3
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001001s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180330' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.004000s ]
+
+[ 2018-06-28T17:45:13+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=4
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002001s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20171230' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.004000s ]
+
+[ 2018-06-28T17:45:16+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=5
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+NOTIC: [2] Declaration of Think\Cache\Driver\Redis::connect($host) should be compatible with Think\Cache::connect($type = '', $options = Array) E:\ff.xiaomaiquan.cn\ThinkPHP\Library\Think\Cache\Driver\Redis.class.php 第 154 行.
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.001000s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20170628' AND '20180627' ) ) GROUP BY s_date  [ RunTime:0.008001s ]
+

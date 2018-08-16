@@ -1,0 +1,25 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="main-title">
+    <h2>导入用户</h2>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <form action="{:U()}" method="post"  role="form" class="form col-lg-6" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="item-label">导入用户</span></label> 
+                    <input type="file"  name="csv" value=""> 
+                </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default submit-btn" id="submit" type="submit" target-form="form">确 定</button>
+                    <button class="btn btn-default btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+                </div>
+            </form>	
+        </div><!-- /.row (nested) -->
+    </div><!-- /.panel-body -->
+</div><!-- /.panel -->
+</block>

@@ -1,0 +1,21 @@
+<block name="side">	
+<aside class="menu">
+  <h2>功能菜单</h2>
+  <div class="list">
+  <volist name="__MENU__.child" id="sub_menu">          
+      <notempty name="sub_menu">
+      <notempty name="key">
+        <h4>{$key}<span></span></h4>
+        </notempty>
+        <ul>
+          <volist name="sub_menu" id="menu">
+            <li <if condition="$menu['class'] eq 'on'">class="on"</if>>                      
+              <a href="{$menu.url|U}">&nbsp;&nbsp;{$menu.title}</a>
+            </li>
+          </volist>
+        </ul>
+      </notempty>
+      </volist>
+  </div>
+</aside>
+</block>

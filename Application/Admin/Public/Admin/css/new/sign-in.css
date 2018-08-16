@@ -1,0 +1,121 @@
+body{
+	height:100%;
+	overflow: hidden;
+	background:#d6dee0 url(../img/sign-bj.png) no-repeat center;
+	background-size:100%;
+}
+.log-title{
+	width:100%;
+	position: absolute;
+	top:15%;
+	left: 0;
+	text-align: center;
+}
+.log-title h2{
+	font-size: 40px;
+	color:#25aca3;
+	text-align: center;
+}
+.sign-kuang{
+	width:517px;
+	height:360px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	padding:20px 13px;
+	margin-top: -130px;
+	margin-left: -270px;
+	background: url(../img/sign-k.png) no-repeat center;
+}
+.sign-kuang form{
+	width:518px;
+	height:280px;
+	padding-top:16px;
+	background: #f4f4f4;
+}
+.sign-kuang input{
+	outline: none;
+}
+.sign-kuang p{
+	text-align: center;
+	margin-bottom: 10px;
+}
+.sign-kuang p.yzm{
+	position:relative;
+}
+.sign-kuang p.yzm img{
+	width:95px;
+	height:39px;
+	position:absolute;
+	top:1px;
+	right:95px;
+}
+.sign-kuang p.js span{
+	margin-right: 24px;
+	font-size: 14px;
+}
+.sign-kuang input[type="text"]{
+	width:327px;
+	height:37px;
+	border:1px solid #eaeaea;
+	background: #fff;
+	text-indent: 22px;
+	font-size: 14px;
+}
+
+.sign-kuang input[type="password"]{
+	width:327px;
+	height:37px;
+	border:1px solid #eaeaea;
+	background: #fff;
+	text-indent: 22px;
+	font-size: 14px;
+}
+.sign-kuang input[type="checkbox"]{
+	margin:3px 3px 0px 5px;
+	display: none;
+}
+.sign-kuang p.ma label{
+	padding-left:20px;
+	margin-right:38px;
+	cursor: pointer;
+	font-size: 14px;
+	color:#c1c1c1;
+	background:url(../img/info-icon-4.png) no-repeat left 4px;
+}
+.sign-kuang p.ma label.checked{
+	background-position: left bottom;
+	background:url(../img/info-icon-5.png) no-repeat left 4px;
+}
+.sign-kuang input[type="submit"]{
+	width:126px;
+	height:44px;
+	background: #2579e9;
+	border:0;
+	font-size: 14px;
+	color: #fff;
+}
+
+.sign-kuang p.js input[type="radio"]{
+	margin:3px 3px 0px 5px;
+	display: none;
+}
+.sign-kuang p.js label{
+	padding-left:20px;
+	margin-right: 24px;
+	font-size: 14px;
+	cursor: pointer;
+	background:url(../img/info-icon-3.png) no-repeat left 2px;
+}
+.sign-kuang p.js label.checked{
+	background-position: left bottom;
+	background:url(../img/info-icon-2.png) no-repeat left 2px;
+}
+footer{
+	width:100%;
+	text-align: center;
+	font-size: 14px;
+	position: absolute;
+	left: 0;
+	bottom:5%;
+}

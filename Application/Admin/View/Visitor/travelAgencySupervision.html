@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="__CSS__/ffcommon.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/fuFengStyle.css">
+	<link rel="stylesheet" type="text/css" href="__CSS__/newStyle.css">
+	<script src="__JS__/ff/echarts.min.js"></script>
+	<script src="__JS__/ff/china.js"></script>
+</head>
+<body onload="aTim();onLoad(7)" class="GZHSJbody KLCountBody travelBody">
+<header>
+	<div class="box-top">
+		<!--<h3>旅游大数据平台</h3>-->
+	</div>
+</header>
+	<div class="body-content">
+		<include file="Public/nav" />
+
+		<div class="main">
+			<!--<include file="Public/ff_menu" />-->
+			<div class="secondLevelNav">
+				<include file="Public/ff_menu" />
+				<!--<ul>-->
+					<!--<li><a href="passengerFlow.html">客流统计</a></li>-->
+					<!--<li><a href="holidayPassengerFlow.html">假日客流</a></li>-->
+					<!--<li><a href="accommodationAnalysis.html">住宿分析</a></li>-->
+					<!--<li><a href="javascript:;" class="active">旅行社监管</a></li>-->
+					<!--<li><a href="complaintAnalysis.html">投诉分析</a></li>-->
+					<!--<li><a href="consumptionAnalysis.html">消费分析</a></li>-->
+				<!--</ul>-->
+			</div>
+			<div class="onelineOne countModuleBox">
+				<ul class="clearfix">
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>近7日地接行程</h4>
+							<p class="float-left"><i class="fa fa-3x fa-area-chart"></i></p>
+							<p class="float-right"><span>{$info.local_ordernum|default=0}</span>笔</p>
+						</div>
+					</li>
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>近7日地接接待游客数</h4>
+							<p class="float-left"><i class="fa fa-3x fa-users"><e>地</e></i></p>
+							<p class="float-right"><span>{$info.local_usernum|default=0 }</span>人</p>
+						</div>
+					</li>
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>近7日组团行程数</h4>
+							<p class="float-left"><i class="fa fa-3x fa-bar-chart"></i></p>
+							<p class="float-right"><span>{$info.group_ordernum|default=0 }</span>笔</p>
+						</div>
+					</li>
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>近7日接待组团游客数</h4>
+							<p class="float-left"><i class="fa fa-3x fa-users"><e>组</e></i></p>
+							<p class="float-right"><span>{$info.group_usernum|default=0}</span>人</p>
+						</div>
+					</li>
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>近7日行程变更数</h4>
+							<p class="float-left"><i class="fa fa-3x fa-pie-chart"></i></p>
+							<p class="float-right"><span>{$info.midify_ordernum|default=0}</span>笔</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="onelineOne">
+				<div class="box-content">
+					<span class="left-top"></span>
+					<span class="right-top"></span>
+					<span class="left-bottom"></span>
+					<span class="right-bottom"></span>
+					<div class="box-content-top clearfix">
+						<h4>团队运行情况统计</h4>
+						<!--<p><span class="active">7天</span><span>30天</span><span>90天</span><span>半年</span><span>一年</span></p>-->
+						<p class="clearfix">
+							<span class="active" onclick="getTravelGroupTotal(7);">7天</span>
+							<span onclick="getTravelGroupTotal(30);">30天</span>
+							<span onclick="getTravelGroupTotal(90);">90天</span>
+							<span onclick="getTravelGroupTotal(180);">半年</span>
+							<span onclick="getTravelGroupTotal(365);">一年</span></p>
+					</div>
+					<div class="char-plate clearfix">
+						<div class="teamOperation-left">
+							<div class="teamOperation-count clearfix">
+								<p class="planing">待出行:<span>0</span>笔</p>
+								<p class="doing">行程中:<span>0</span>笔</p>
+								<p class="end">已结束:<span>0</span>笔</p>
+							</div>
+							<div id="teamOperation" style="width: 1000px; height:400px;"></div>
+						</div>
+						<div class="teamOperation-right">
+							<p>行程变更统计</p>
+							<div id="travelChange" style="width: 200px; height:150px;"></div>
+							<p>带团导游数统计</p>
+							<div id="tourGuide" style="width: 200px; height:150px;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="onelineTwo">
+				<ul class="clearfix">
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top clearfix">
+								<h4>地接行程数据统计</h4>
+								<!--<p><span class="active">7天</span><span>30天</span><span>90天</span><span>半年</span><span>一年</span></p>-->
+								<p class="clearfix">
+									<span class="active" onclick="getTravelLocalOrderInfo(7);">7天</span>
+									<span onclick="getTravelLocalOrderInfo(30);">30天</span>
+									<span onclick="getTravelLocalOrderInfo(90);">90天</span>
+									<span onclick="getTravelLocalOrderInfo(180);">半年</span>
+									<span onclick="getTravelLocalOrderInfo(365);">一年</span></p>
+							</div>
+							<div class="char-plate">
+								<div id="localTravelAgency" style="width: 550px; height:350px; margin-top: 30px;"></div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top clearfix">
+								<h4>组团行程数据统计</h4>
+								<!--<p><span class="active">7天</span><span>30天</span><span>90天</span><span>半年</span><span>一年</span></p>-->
+								<p class="selectday clearfix">
+									<span class="active" onclick="getTravelGroupOrderInfo(7);">7天</span>
+									<span onclick="getTravelGroupOrderInfo(30);">30天</span>
+									<span onclick="getTravelGroupOrderInfo(90);">90天</span>
+									<span onclick="getTravelGroupOrderInfo(180);">半年</span>
+									<span onclick="getTravelGroupOrderInfo(365);">一年</span>
+								</p>
+							</div>
+							<div class="char-plate">
+								<div id="tourOrganizingAgency" style="width: 550px; height:350px; margin-top: 30px;"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script src="__JS__/ff/jquery.js"></script>
+<script src="__JS__/ff/common.js"></script>
+<script src="__JS__/ff/westeros.js"></script>
+<script src="__JS__/ff/dateAnalysisJS/travelAgency.js"></script>
+
+</html>
+<script>
+
+
+	function onLoad(days) {
+	    //组团统计
+        getTravelGroupTotal(days);
+	    //地接
+        getTravelLocalOrderInfo(days);
+	    //团队
+        getTravelGroupOrderInfo(days);
+    }
+
+	function aTim(){
+		var date = new Date();
+		var hours = date.getHours();
+		var min = date.getMinutes();
+		min = min<10?"0"+min:min;
+		var sec = date.getSeconds();
+		sec = sec<10?("0"+sec):sec;
+		$(".date-left .time").text(hours + ":" + min + ":" + sec);
+		setTimeout("aTim()",1000);
+	}
+
+	$(".clearfix p span").click(function(){
+		$(this).addClass("active");
+		$(this).siblings().removeClass("active");
+	});
+
+
+</script>

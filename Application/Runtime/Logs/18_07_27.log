@@ -1,0 +1,139 @@
+[ 2018-07-27T09:25:39+08:00 ] 127.0.0.1 /index.php/Admin/Public/login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+NOTIC: [8] Use of undefined constant UC_AUTH_KEY - assumed 'UC_AUTH_KEY' E:\ff.xiaomaiquan.cn\ThinkPHP\Common\functions.php 第 457 行.
+SQL: SHOW COLUMNS FROM `ff_admin` [ RunTime:0.093601s ]
+NOTIC: [8] Use of undefined constant UC_AUTH_KEY - assumed 'UC_AUTH_KEY' E:\ff.xiaomaiquan.cn\Application\Admin\Controller\PublicController.class.php 第 45 行.
+SQL: SELECT * FROM `ff_admin` WHERE ( `username` = 'admin' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_action` [ RunTime:0.031200s ]
+SQL: SELECT * FROM `ff_action` WHERE ( `name` = 'user_login' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: UPDATE `ff_admin` SET `login`=`login`+1,`last_login_time`=1532654739,`last_login_ip`='2130706433' WHERE ( `id` = 1 ) [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: admin_id E:\ff.xiaomaiquan.cn\Application\Admin\Model\AdminUserModel.class.php 第 141 行.
+
+[ 2018-07-27T09:25:42+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitornumbydate' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.054003s ]
+SQL: SELECT SUM(user_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY s_date  [ RunTime:0.016001s ]
+
+[ 2018-07-27T09:25:42+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getCarNumByDate.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.002000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getcarnumbydate' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.002000s ]
+SQL: SELECT SUM(car_num) num,`s_date` FROM `ff_scenic_flow_day` WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY s_date  [ RunTime:0.003000s ]
+
+[ 2018-07-27T09:25:44+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.077005s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:1.138065s ]
+
+[ 2018-07-27T09:25:44+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.004000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003001s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.013000s ]
+
+[ 2018-07-27T09:25:44+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFrom.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrom' ) LIMIT 1   [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) num,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY province_id ORDER BY user_num desc  [ RunTime:0.012000s ]
+
+[ 2018-07-27T09:25:44+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByCity.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombycity' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002000s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.city_id = b.id  WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY city_id ORDER BY age desc LIMIT 10   [ RunTime:0.057003s ]
+
+[ 2018-07-27T09:25:45+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.067004s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY age_phase  [ RunTime:0.405023s ]
+
+[ 2018-07-27T09:25:45+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorAge.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.000000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorage' ) LIMIT 1   [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.003000s ]
+SQL: SELECT SUM(user_num) num,`age_phase`,avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY age_phase  [ RunTime:0.003000s ]
+
+[ 2018-07-27T09:25:45+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitSex.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.003000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitsex' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_sex` [ RunTime:0.032002s ]
+SQL: SELECT SUM(male_num) men,SUM(female_num) women FROM `ff_visitor_sex` WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) )  [ RunTime:0.011001s ]
+
+[ 2018-07-27T09:25:45+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFlow.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.005001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorflow' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_day` [ RunTime:0.003000s ]
+SQL: SELECT SUM(a.user_num) num,b.name name FROM ff_scenic_flow_day a left join ff_scenic b on a.scenic_id = b.id  WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY scenic_id ORDER BY num desc LIMIT 10   [ RunTime:0.041003s ]
+
+[ 2018-07-27T09:25:45+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getWeekAvg.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.002001s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getweekavg' ) LIMIT 1   [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_stay` [ RunTime:0.102006s ]
+SQL: SELECT avg(avg_day) stay_time FROM `ff_visitor_stay` WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) LIMIT 1   [ RunTime:0.080004s ]
+SQL: SHOW COLUMNS FROM `ff_ticket_reservations` [ RunTime:0.043003s ]
+SQL: SELECT avg(day_phase) fix_time FROM `ff_ticket_reservations` WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) LIMIT 1   [ RunTime:0.065003s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.003000s ]
+SQL: SELECT avg(car_stay) car_time FROM `ff_scenic_flow_area` WHERE ( `car_stay` <> 0 ) AND (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) LIMIT 1   [ RunTime:0.008000s ]
+SQL: SHOW COLUMNS FROM `ff_visitor_age` [ RunTime:0.002000s ]
+SQL: SELECT avg(age_avg) age_avg FROM `ff_visitor_age` WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) LIMIT 1   [ RunTime:0.003001s ]
+
+[ 2018-07-27T09:25:45+08:00 ] 127.0.0.1 /index.php/Admin/Attraction/getVisitorFromByProvince.html?s_day=1
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCache [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ff_menu` [ RunTime:0.001000s ]
+SQL: SELECT * FROM `ff_menu` WHERE ( `pid` = 0 ) AND ( `hide` = 0 ) ORDER BY sort asc  [ RunTime:0.001000s ]
+SQL: SELECT `id` FROM `ff_menu` WHERE ( url like 'Attraction/getvisitorfrombyprovince' ) LIMIT 1   [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ff_scenic_flow_area` [ RunTime:0.002001s ]
+SQL: SELECT SUM(a.user_num) age,b.shortname name FROM ff_scenic_flow_area a left join ff_area b on a.province_id = b.id  WHERE (  (`s_date` BETWEEN '20180720' AND '20180726' ) ) GROUP BY province_id ORDER BY age desc LIMIT 10   [ RunTime:0.014000s ]
+

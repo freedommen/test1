@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<include file="Public/ff_head" />
+<link rel="stylesheet" type="text/css" href="__CSS__/newStyle.css">
+<script src="__JS__/ff/ticketAnalysis.js"></script>
+<body onload="aTim()" class="GZHSJbody KLCountBody travelBody ticketBody">
+<header>
+	<div class="box-top">
+		<!--<h3>旅游大数据平台</h3>-->
+	</div>
+</header>
+	<div class="body-content">
+		<include file="Public/nav" />
+		<div class="main">
+			<div class="secondLevelNav">
+				<!--<ul>
+					<li><a href="{:U('Attraction/index')}">景区概况</a></li>
+					<li><a href="{:U('Attraction/passengerFlow')}">景区客流</a></li>
+					<li><a href="javascript:;" class="active">景区车流</a></li>
+					<li><a href="{:U('Scenic/ticketAnalysis')}">票务分析</a></li>
+				</ul>-->
+				<include file="Public/ff_menu" />
+			</div>
+			<div class="onelineOne countModuleBox">
+				<ul class="clearfix">
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>今日票务总收入</h4>
+							<p class="float-left"><i class="fa fa-3x fa-database"><e>今</e></i></p>
+							<p class="float-right"><span>{$ticket_info.amount|default=0|number_format}</span>元</p>
+						</div>
+					</li>
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>
+								今日销售票总量
+							</h4>
+							<p class="float-left"><i class="fa fa-3x fa-ticket"><e>今</e></i></p>
+							<p class="float-right"><span>{$ticket_info.total|default=0|number_format}</span>张</p>
+						</div>
+					</li>
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>今日网络销售票总数</h4>
+							<p class="float-left"><i class="fa fa-3x fa-ticket fa-ticket"><e>网</e></i></p>
+							<p class="float-right"><span>{$ticket_info.network_total|default=0|number_format}</span>张</p>
+						</div>
+					</li>
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>近7天累计票务总收入</h4>
+							<p class="float-left"><i class="fa fa-3x fa-database"><e>7</e></i></p>
+							<p class="float-right"><span>{$ticket_info['sevenday_total']['amount']|default=0|number_format}</span>元</p>
+						</div>
+					</li>
+					<li class="countModule gradient">
+						<div class="countModule-inner clearfix">
+							<h4>近7天累计销售票量</h4>
+							<p class="float-left"><i class="fa fa-3x fa-ticket"><e>7</e></i></p>
+							<p class="float-right"><span>{$ticket_info['sevenday_total']['total']|default=0|number_format}</span>张</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="onelineTwo">
+				<ul class="clearfix">
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top clearfix">
+								<h4>售票量统计</h4>
+								<p><span class="active" onclick="getTicket(1);">7天</span><span onclick="getTicket(2);">30天</span><span onclick="getTicket(3);">90天</span><span onclick="getTicket(4);">半年</span><span onclick="getTicket(5);">一年</span></p>
+							</div>
+							<div class="char-plate">
+								<div id="ticketCount"></div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top clearfix">
+								<h4>提前购票天数统计</h4>
+								<p><span class="active" onclick="getReservations(1);">7天</span><span onclick="getReservations(2);">30天</span><span onclick="getReservations(3);">90天</span><span onclick="getReservations(4);">半年</span><span onclick="getReservations(5);">一年</span></p>
+							</div>
+							<div class="char-plate">
+								<div id="advanceDays"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="onelineTwo">
+				<ul class="clearfix">
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top clearfix">
+								<h4>票务预订来源统计</h4>
+								<p><span class="active" onclick="getSource(1);">7天</span><span onclick="getSource(2);">30天</span><span onclick="getSource(3);">90天</span><span onclick="getSource(4);">半年</span><span onclick="getSource(5);">一年</span></p>
+							</div>
+							<div class="char-plate">
+								<div id="orderSource"></div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top clearfix">
+								<h4>售票类型统计占比</h4>
+								<p><span class="active" onclick="getType(1);">7天</span><span onclick="getType(2);">30天</span><span onclick="getType(3);">90天</span><span onclick="getType(4);">半年</span><span onclick="getType(5);">一年</span></p>
+							</div>
+							<div class="char-plate">
+								<div id="ticketType"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="onelineTwo">
+				<ul class="clearfix">
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top clearfix">
+								<h4>售票渠道线上线下占比</h4>
+								<p><span class="active" onclick="getChannel(1);">7天</span><span onclick="getChannel(2);">30天</span><span onclick="getChannel(3);">90天</span><span onclick="getChannel(4);">半年</span><span onclick="getChannel(5);">一年</span></p>
+							</div>
+							<div class="char-plate">
+								<div id="SalesChannelTFRt"></div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="box-content">
+							<span class="left-top"></span>
+							<span class="right-top"></span>
+							<span class="left-bottom"></span>
+							<span class="right-bottom"></span>
+							<div class="box-content-top clearfix">
+								<h4>支付方式统计分析</h4>
+								<p><span class="active" onclick="getPay(1);">7天</span><span onclick="getPay(2);">30天</span><span onclick="getPay(3);">90天</span><span onclick="getPay(4);">半年</span><span onclick="getPay(5);">一年</span></p>
+							</div>
+							<div class="char-plate">
+								<div id="PayWayTFRt"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>	
+<script>
+	function aTim(){
+		var date = new Date();
+		var hours = date.getHours();
+		var min = date.getMinutes();
+		min = min<10?"0"+min:min;
+		var sec = date.getSeconds();
+		sec = sec<10?("0"+sec):sec;
+		$(".date-left .time").text(hours + ":" + min + ":" + sec);
+		setTimeout("aTim()",1000);
+	}
+	$(document).ready(function () {
+		$('.addBtnSpan').click(function () {
+			$('.chose-box').slideToggle(150);
+        });
+		$(".box-content tbody tr").click(function () {
+            $(".box-content tbody tr").removeClass("active");
+			$(this).addClass("active");
+        });
+
+    })
+	//模块选中状态判断
+	$(function(){
+		$(".clearfix span").click(function(){
+			$(this).addClass("active");
+			$(this).siblings().removeClass("active");
+		});
+	});
+
+	$(function() {
+		//售票量统计
+	    var ticketCountChart = echarts.init(document.getElementById('ticketCount') , 'westeros');
+	    option = {
+	        legend:{
+	            data:['票量'],
+	            right:'0',
+	            icon:'circle'
+	        },
+	        grid: [
+	            {
+	                width:'85%',
+	                left:'10%'
+	            }
+	        ],
+	        tooltip: {
+	            trigger: "axis",
+	            axisPointer: {
+	                lineStyle: {
+	                    color: "rgb(0, 185, 255)",
+	                    type: "solid",
+	                    width: 1
+	                },
+	                type: "line",
+	                areaStyle: {
+	                    type: "default"
+	                }
+	            }
+	        },
+	        calculable: true,
+	        xAxis: [
+	            {
+	                type: "category",
+	                boundaryGap: true,
+	                axisLine: {
+	                    show: true
+	                },
+	                splitLine: {
+	                    "show": false
+	                },
+	                data: {$ticket_num_date}
+	            }
+	        ],
+	        yAxis: [
+	            {
+	                name:'单位：张',
+	                type: "value",
+	                axisLine: {
+	                    show: true
+	                }
+	            }
+	        ],
+	        series: [
+	            {
+	                name: "票量",
+	                type: "bar",
+	                barWidth:'40%',
+	                smooth: true,
+	                itemStyle:{
+	                    normal:{
+	                        // barBorderRadius: [100, 100, 0, 0],
+	                        color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+	                            offset: 0,
+	                            color: '#0286de'
+	                        }, {
+	                            offset: .8,
+	                            color: '#992cee'
+	                        }], false)
+	                    }
+	                },
+	                data: {$ticket_num}
+	            }
+	        ]
+	    };
+	    ticketCountChart.setOption(option);
+
+	    //提前购票天数统计
+	    var advanceDaysChart = echarts.init(document.getElementById('advanceDays') , 'westeros');
+	    option = {
+	        title: {
+	            /*text: '平均提前预定天数',
+	            subtext: '2天',
+	            textStyle:{
+	                fontSize: 14,
+	                fontWight:'normal',
+	                color: '#80a6f8'
+	            },*/
+	            subtextStyle:{
+	                fontSize: 20,
+	                color: '#eee'
+	            },
+	            top: '45%',
+	            left: '60%',
+	            textAlign: 'center'
+	        },
+	        tooltip: {
+	            trigger: 'item',
+	            formatter: "{b}<br/> 人数：{c} <br/> 占比：{d}%"
+	        },
+	        legend: {
+	            orient: 'vertical',
+	            x: '5%',
+	            y: 'top',
+	            icon: 'square',
+	            data:['0天','1天','2天','3天','>3天']
+	        },
+	        series: [
+	            {
+	                type:'pie',
+	                radius: ['50%', '70%'],
+	                center: ['60%', '50%'],
+	                avoidLabelOverlap: true,
+	                label: {
+	                    normal:{
+	                        formatter:'{b}\\n{d}%'
+	                    },
+	                    emphasis: {
+	                        show: true,
+	                        textStyle: {
+	                            fontWeight: 'bold'
+	                        }
+	                    }
+	                },
+	                labelLine: {
+	                    normal: {
+	                        show: true
+	                    }
+	                },
+	                data:{$ticket_reservations}
+	            }
+	        ]
+	    };
+	    advanceDaysChart.setOption(option);
+
+	    //票务预订来源统计
+	    var orderSourceChart = echarts.init(document.getElementById('orderSource') , 'westeros');
+	    option = {
+	        tooltip: {
+	            trigger: 'item',
+	            formatter: "{b}<br/> 票量：{c} <br/> 占比： {d}%"
+	        },
+	        legend: {
+	            orient: 'vertical',
+	            x: '5%',
+	            y: 'top',
+	            icon: 'square',
+	            data:['窗口或自助机','携程','美团','驴妈妈','其他']
+	        },
+	        series: [
+	            {
+	                name:'售票预定来源',
+	                type:'pie',
+	                // roseType: 'area',
+	                radius: ['50%', '70%'],
+	                center: ['60%', '50%'],
+	                avoidLabelOverlap: true,
+	                label: {
+	                    normal:{
+	                        formatter: '{b}\\n{d}%'
+	                    },
+	                    emphasis: {
+	                        show: true,
+	                        textStyle: {
+	                            fontWeight: 'bold'
+	                        }
+	                    }
+	                },
+	                labelLine: {
+	                    normal: {
+	                        show: true
+	                    }
+	                },
+	                data:{$ticket_source}
+	            }
+	        ]
+	    };
+	    orderSourceChart.setOption(option);
+
+	    //售票类型统计占比
+	    var ticketTypeChart = echarts.init(document.getElementById('ticketType') , 'westeros');
+	    option = {
+	        tooltip: {
+	            trigger: 'item',
+	            formatter: "{b}<br/> 票量：{c} <br/>占比：{d}%"
+	        },
+	        legend: {
+	            orient: 'vertical',
+	            x: '5%',
+	            y: 'top',
+	            icon: 'square',
+	            data:[ '散客票','团队票','活动票']
+	        },
+	        series: [
+	            {
+	                name:'售票类型',
+	                type:'pie',
+	                // roseType : 'area',
+	                radius: ['50%', '70%'],
+	                center: ['60%', '50%'],
+	                avoidLabelOverlap: true,
+	                label: {
+	                    normal: {
+	                        formatter: '{b}\\n{d}%'
+	                    },
+	                    emphasis: {
+	                        show: true,
+	                        textStyle: {
+	                            fontWeight: 'bold'
+	                        }
+	                    }
+	                },
+	                labelLine: {
+	                    normal: {
+	                        show: true
+	                    }
+	                },
+	                data:{$ticket_type}
+	            }
+	        ]
+	    };
+
+	    ticketTypeChart.setOption(option);
+
+	    //售票渠道线上线下占比
+	    var SalesChannelTFRtChart = echarts.init(document.getElementById('SalesChannelTFRt') , 'westeros');
+	    option = {
+	        tooltip: {
+	            trigger: 'item',
+	            formatter: "{b} <br/>票量 : {c} <br/>占比 : {d}%"
+	        },
+	        legend: {
+	            orient: 'vertical',
+	            x: '5%',
+	            y: 'top',
+	            icon: 'square',
+	            data:['OTA','自助机','窗口']
+	        },
+	        series: [
+	            {
+	                type:'pie',
+	                roseType: 'area',
+	                radius: ['40%', '70%'],
+	                center: ['60%', '50%'],
+	                avoidLabelOverlap: true,
+	                label: {
+	                    normal: {
+	                        formatter: '{b}\\n{d}%'
+	                    },
+	                    emphasis: {
+	                        show: true,
+	                        textStyle: {
+	                            fontSize: '14',
+	                            fontWeight: 'bold'
+	                        }
+	                    }
+	                },
+	                labelLine: {
+	                    normal: {
+	                        show: true
+	                    }
+	                },
+	                data:{$ticket_channel}
+	            }
+	        ]
+	    };
+	    SalesChannelTFRtChart.setOption(option);
+
+		//支付方式统计分析
+	    var PayWayTFRtChart = echarts.init(document.getElementById('PayWayTFRt') , 'westeros');
+	    option = {
+	        tooltip: {
+	            trigger: 'item',
+	            formatter: "{b}<br/> 数量：{c} <br/>占比：{d}%"
+	        },
+	        legend: {
+	            orient: 'vertical',
+	            x: '5%',
+	            y: 'top',
+	            icon: 'square',
+	            data:['支付宝','微信','现金', '其他']
+	        },
+	        series: [
+	            {
+	                name:'支付方式',
+	                type:'pie',
+	                radius: ['40%', '70%'],
+	                center: ['60%', '50%'],
+	                avoidLabelOverlap: true,
+	                roseType: 'area',
+	                label: {
+	                    normal: {
+	                        formatter: '{b}\\n{d}%'
+	                    },
+	                    emphasis: {
+	                        show: true,
+	                        textStyle: {
+	                            fontSize: '14',
+	                            fontWeight: 'bold'
+	                        }
+	                    }
+	                },
+	                labelLine: {
+	                    normal: {
+	                        show: true
+	                    }
+	                },
+	                data:{$ticket_pay}
+	            }
+	        ]
+	    };
+	    PayWayTFRtChart.setOption(option);
+
+	});
+</script>

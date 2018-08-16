@@ -1,0 +1,311 @@
+.input-area{
+	margin-bottom: 16px;
+}
+.input-area span{
+	width:75px;
+	margin-right: 16px;
+	display: inline-block;
+	font-size: 14px;
+	padding-left: 15px;
+}
+.input-area span.area-icon{
+	background: url(../img/area-icon.png) no-repeat left center;
+}
+.btn-area{
+	padding-left: 110px;
+}
+.btn-area input{
+	width:92px;
+	height:40px;
+	font-size: 14px;
+	color:#fff;
+	background: #3d3d3d;
+	outline: none;
+	border:0;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;cursor: pointer;
+}
+
+/*景点管理*/
+.scenic-list .xz-scenic{
+	width:86px;
+	height:36px;
+	display: block;
+	text-align: center;
+	line-height: 36px;
+	font-size: 14px;/*color:#fa5352;*/
+	color:#fff;/*border:1px solid #fa5352;*/
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	margin-bottom: 15px;
+	padding:0 10px;
+	background: #3d3d3d;
+}
+table.scenic-form{
+	width:100%;
+	border:0;
+}
+table.scenic-form th,td{
+	border:1px solid #e5e5e5;
+}
+table.scenic-form th{
+	background: #e5e5e5;
+	height:44px;
+	font-size: 16px;
+}
+table.scenic-form td{
+	font-size: 14px;
+	text-align: center;
+	height: 58px;
+}
+table.scenic-form td a.revise{
+	color:#fa5352;
+	margin-right: 30px;
+}
+
+/*景区信息编辑*/
+.input-area .introduce{
+	width: 620px;
+	max-width: 620px;
+	height:230px;
+	padding:10px;
+	border:1px solid #e4e4e4;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	outline: none;
+	resize:none;
+}
+/*设备设施管理*/
+.device-condition{
+	padding: 22px 24px;
+	box-shadow: 2px 2px 32px 0 #f5f5f5;
+}
+.condition-t{
+	font-size: 14px;
+	margin-right: 15px;
+}
+.device-condition input[type="text"]{
+	width:102px;
+	height:30px;
+	padding:0 10px;
+	margin-right: 5px;
+	border:1px solid #e4e4e4;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	outline: none;
+}
+.device-condition select{
+	width:120px;
+	height:30px;
+	border:1px solid #e4e4e4;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	margin-right: 5px;
+	padding-left: 10px;
+	outline:none;
+	
+}
+.device-condition input[type="button"]{
+	width:74px;
+	height:32px;
+	background: #3d3d3d;
+	font-size: 14px;
+	color:#fff;
+	border:0;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+}
+.device-btn{
+	margin:26px 0;
+}
+.device-btn a{
+	font-size: 14px;
+	color:#fff;/*color:#fa5352;*/
+	display: inline-block;
+	text-align: center;
+	padding:6px 10px;/*border:1px solid #fa5352;*/
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+    background: #3d3d3d;
+}
+.device-list{
+	border:0;
+	width:100%;
+}
+.device-list td,th{
+	border:1px solid #e5e5e5;
+}
+.device-list th{
+	font-size: 16px;
+	height:44px;
+	background: #e5e5e5;
+}
+.device-list td{
+	font-size:14px;
+	height:56px;
+	text-align: center;
+}
+.device-list td img{
+	width:70px;
+}
+.device-list td a{
+	color:#333;
+}.device-list td a:hover{
+	color:#fa5352;
+}
+
+/*综合管理*/
+.zhgl-box{
+	height:45px;
+	position: relative;
+	line-height: 45px;
+}
+.zhgl-tab{
+	float: left;
+}
+.zhgl-tab .two-stage{
+	min-width: 378px;
+	position: absolute;
+	top:45px;
+	left: 0;
+	z-index: 10;
+	padding-top: 10px;
+	background: url(../img/two-stage-icon.png) no-repeat 245px 0;
+}
+.zhgl-tab #area-list{
+	background: url(../img/two-stage-icon.png) no-repeat 342px 0;
+}
+.zhgl-tab .two-stage div{
+	background: rgba(0,0,0,.75);
+}
+.zhgl-tab .two-stage a{
+	color:#fff;
+	padding:0 15px;
+	border-right:1px solid #fff;
+}
+.zhgl-tab .two-stage a:last-child{
+	border-right: 0;
+}
+.zhgl-tab .two-stage a.stage-active{
+	color:#fa5252;
+}
+.zhgl-box .zhgl-tab a.tab-active{
+	background: #fa5252;
+	color:#fff;
+}
+.zhgl-tab a.tab-name{
+	font-size: 16px;
+	color:#777;
+	padding:12px 30px;
+}
+.zhgl-btn{
+	float: right;
+}
+.zhgl-btn a{
+	padding:6px 12px;
+	background: #000;
+	color:#fff;
+}
+.map_container{
+	position: relative;
+}
+.map_container img{
+	width:100%;
+}
+.map-btn{
+	position: absolute;
+	top:30%;
+	right:25px;
+	text-align: right;
+}
+.map-btn a{
+	text-align: center;
+	color:#fff;
+	padding:4px 5px;
+	display: block;
+	margin-bottom: 5px;
+	background: rgba(0,0,0,.75);
+}
+.map-mark{
+	position: absolute;
+	top:370px;
+	left: 500px;
+	color:#fff;
+	padding:20px;
+	background: rgba(0,0,0,.75);
+	display: none;
+}
+
+.jdbj-ht-btn{
+	width:72px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+	background: #e4e4e4;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+}
+
+.map-area{
+	position: absolute;
+	height:130px;
+	background:rgba(0,0,0,.75);
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	padding:15px 10px;
+}
+.map-tit{
+	height:40px;
+	line-height: 40px;
+	font-size: 14px;
+	color:#fff;
+}
+.area_name{
+	height:20px;
+	border:1px solid #ededed; 
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	outline: none;
+}
+.map-area-btn{
+	margin-top: 15px;
+}
+.map-area-btn input{
+	width:50px;
+	height:25px;
+	border:none;
+	color:#fff;
+	margin:0 5px;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	background: #fa5252;
+}
+.radio-in input{
+	margin:0 12px 0 0;
+}
+.radio-in label{
+	margin-right: 46px;
+}
+.t-search input[type="button"]{
+	width:74px;
+	height:32px;
+	background: #3d3d3d;
+	font-size: 14px;
+	color:#fff;
+	border:0;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+}

@@ -1,0 +1,21 @@
+<extend name="Public/map"/>
+
+<block name="body">
+    <section class="jqgl">
+        <form action="{:U('AuthManager/writeGroup')}" method="post" role="form" class="form " style="width:100%;">
+            <input type="hidden" name="id" value="{$auth_group.id}" />
+            <div class="input-area input-long">
+                <span class="area-icon">用户组</span>        
+                <input id="auth-title" type="text" name="title" class="form-control" value="{$auth_group.title}"/>         
+            </div>
+            <div class="input-area input-long">
+                <span class="area-icon">描述</span>         
+                <textarea id="auth-description" type="text" name="description" class="introduce" style="height:100px;">{$auth_group.description}</textarea>         
+            </div>
+            <div class="btn-area">
+                <input class="ajax-post" type="submit" target-form="form" value="保 存"/>
+                <input type="button" onclick="javascript:history.back(-1);return false;" value="返 回"/>
+            </div>
+        </form>
+    </section>
+</block>
