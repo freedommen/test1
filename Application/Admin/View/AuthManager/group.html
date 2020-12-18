@@ -1,0 +1,36 @@
+<extend name="Public/map" />
+<block name="body">
+   
+<div class="panel panel-default">
+    <section class="jqgl">
+        <form  action="{:U('addToGroup')}" method="post" enctype="application/x-www-form-urlencoded" class="form" role="form" >
+            <label class="item-label">{$nickname}  所属的用户组列表</label>
+            <volist name="auth_groups" id="vo">
+            <label class="checkbox" class="form-control">
+                <input class="auth_groups" type="checkbox" name="group_id[]" value="{$vo.id}">{$vo.title}
+            </label>
+            </volist>
+            <input type="hidden" name="uid" value="{:I('uid')}">
+            <input type="hidden" name="batch" value="true">
+            <br/><br/>
+            <div class="btn-area">
+                <input class="ajax-post" type="submit" target-form="form" value="保 存"/>
+                <input type="button" onclick="javascript:history.back(-1);return false;" value="返 回"/>
+            </div>
+        </form>
+     </section>
+</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(function(){
+    var group = [{$user_groups}];
+    $('.auth_groups').each(function(){
+        if( $.inArray( parseInt(this.value,10),group )>-1 ){
+            $(this).prop('checked',true);
+        }
+    });
+}); 
+</script>
+</block>

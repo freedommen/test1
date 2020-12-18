@@ -1,0 +1,28 @@
+
+<div class="nav">
+    <div class="nav-left">
+        <ul class="clearfix" >
+            <volist name="__MENU__.main" id="menu">
+                <li class="{$menu.class|default=''}"><a href="{$menu.url|U}"><span>{$menu.title}</span></a></li>
+                <!--<li class="active"><a href="javascript:;">数据概况</a></li>-->
+                <!--<li><a href="{:U('Visitor/index')}">客流统计</a></li>-->
+                <!--<li><a href="{:U('Opinion/index')}">舆情监测</a></li>-->
+                <!--<li><a href="javascript:;">酒店监测</a></li>-->
+                <!--<li class="clearfix" ><a href="{:U('Wx/index')}">网络行为</a></li>-->
+            </volist>
+        </ul>
+    </div>
+    <div class="nav-right float-right clearfix">
+        <div class="quit-content">
+            <span>|</span>
+            <a href="{:U('Public/logout')}" class="quit">退出</a>
+        </div>
+        <div class="date-left">
+            <p class="date">{$Think.const.NOW_TIME|date="Y年n月j日",###}</p>
+            <p class="time">{$Think.const.NOW_TIME|date="G:i:s",###}</p>
+            <!--<span class="week">星期三</span>-->
+            <!--<span class="weather"> 晴 ≤3级风 9℃</span>-->
+        </div>
+    </div>
+</div>
+<div><img src="__IMG__/ffimg/top-fgx.png"></div>

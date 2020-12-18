@@ -1,0 +1,28 @@
+<extend name="Public/map"/>
+
+<block name="body">
+    <section class="jqgl">
+        <form action="{:U('User/addData')}" method="post" role="form" class="form " style="width:100%;">
+            <div class="input-area input-long">
+                <span class="area-icon">用户名</span> 
+                <input type="text" class="form-control" name="username" value=""> 
+            </div>
+            <div class="input-area input-long">
+                <span class="area-icon">密码</span> 
+                <input type="password" class="text input-large form-control" name="password" value=""> 
+            </div>
+            <div class="input-area input-long">
+                <span class="area-icon">确认密码</span> 
+                <input type="password" class="text input-large form-control" name="repassword" value=""> 
+            </div>
+            <div class="input-area input-long">
+                <span class="area-icon">邮箱</span> 
+                <input type="text" class="text input-large form-control" name="email" value=""> 
+            </div>
+            <div class="btn-area">
+                <input class="ajax-post" type="submit" target-form="form" value="保 存"/>
+                <input type="button" onclick="javascript:history.back(-1);return false;" value="返 回"/>
+            </div>
+        </form>
+    </section>
+</block>

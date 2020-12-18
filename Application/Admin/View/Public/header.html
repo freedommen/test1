@@ -1,0 +1,14 @@
+<header>
+    <nav class="clearfix">
+        <ul class="clearfix">
+            <volist name="__MENU__.main" id="menu">
+                <li class="{$menu.class|default=''}"><a href="{$menu.url|U}">{$menu.title}</a></li>
+            </volist>
+        </ul>
+        <div class="admin">
+            <!--<a href="{$change_url}" class="program">{$change_role}</a>-->
+            <a href="{:U('User/index')}" class="user">{:get_username()}</a>
+            <a href="{:U('Public/logout')}" class="push" alt="登出" title="登出"></a>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,105 @@
+.edit form input[type="text"].active1{
+	width: 238px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.jc-info p input[type="radio"]{
+	margin:3px 3px 0px 5px;
+	display: none;
+}
+.jc-info p label{
+	padding-left:20px;
+	margin-right: 50px;
+	cursor: pointer;
+	background:url(../img/info-icon-3.png) no-repeat left 2px;
+}
+.jc-info p label.checked{
+	background-position: left bottom;
+	background:url(../img/info-icon-2.png) no-repeat left 2px;
+}
+
+.jc-info p select{
+	width: 120px;
+	height: 30px;
+	line-height: 30px;
+	padding-right: 20px;
+	text-indent: 12px;
+	text-align: left;
+	vertical-align: middle;
+	border: 1px solid #dcdcdc;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline:none;
+	margin-right: 20px;
+	background: url(../img/info-img-1.png) no-repeat right 0;
+}
+.jc-info p select.md{
+	width:365px;
+}
+.jc-info div{
+	margin-bottom: 20px;
+}
+.jc-info div input[type="checkbox"]{
+	margin:3px 3px 0px 5px;
+	display: none;
+}
+.jc-info div label{
+	padding-left:20px;
+	margin-right:38px;
+	cursor: pointer;
+	background:url(../img/info-icon-4.png) no-repeat left 4px;
+}
+.jc-info div label.checked{
+	background-position: left bottom;
+	background:url(../img/info-icon-5.png) no-repeat left 4px;
+}
+
+.edit form p i{
+	width:auto;
+	height:auto;
+	display: inline-block;
+}
+.edit div span.title{
+	min-width: 170px;
+    text-align: left;
+    display: inline-block;
+    padding-left: 24px;
+}
+.edit div.ICON p.imges{
+	width:60px;
+	height:60px;
+	margin:0 16px 0 0;
+	display: inline-block;
+}
+.edit div.ICON .imges{
+	position: relative;
+	top:15px;
+}
+.edit div.printsreen p.imges{
+	width:80px;
+	height:130px;
+	margin:0 16px 0 0;
+	display: inline-block;
+}
+.edit div.printsreen .imges{
+	position: relative;
+	top:15px;
+}
+a.delete{
+	margin-left: 44px;
+}
+.edit form p a.upload{
+	width:auto;
+	height:42px;
+	color:#fff;
+	padding:0 15px;
+	text-align: center;
+	line-height: 42px;
+	border-radius: 10px;
+    -webkit-border-radius: 10px;
+	background: #25ada4;
+}

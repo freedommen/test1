@@ -1,0 +1,72 @@
+<extend name="Public/map"/>
+
+<block name="body">
+<style type="text/css">
+    .input-area span{width: 120px;}
+</style>
+<section class="jqgl">
+    <form action="{:U()}" method="post" role="form" class="form " style="width:100%;">
+        <input type="hidden" name="id" value="{$info.id|default=''}">
+        <div class="input-area input-long">
+            <span class="area-icon">标题</span>
+            <input type="text" class="form-control" name="title" value="{$info.title|default=''}">
+        </div>
+        <div class="input-area input-long">
+            <span class="area-icon">排序</span>
+            <input type="text" class="form-control" name="sort" value="{$info.sort|default=0}">
+        </div>
+        <div class="input-area input-long">
+            <span class="area-icon">链接</span>
+            <input type="text" class="form-control" name="url" value="{$info.url|default=''}">
+        </div>
+        <div class="input-area device-condition" style="padding:0;box-shadow:unset;">
+            <span class="area-icon">上级菜单</span>
+            <select name="pid" class="form-control" style="width:auto;">
+                <volist name="Menus" id="menu">
+                    <option value="{$menu.id}">{$menu.title_show}</option>
+                </volist>
+            </select>
+        </div>
+        <div class="input-area input-long">
+            <span class="">分组</span>
+            <input type="text" class="form-control" name="group" value="{$info.group|default=''}">
+        </div>
+        <div class="input-area">
+            <span class="">是否隐藏</span>
+            <p style="display:inline-block;">
+                <label class="radio <if condition='$info[hide] eq 1'>checked</if>"><input type="radio" name="hide" value="1" <if condition='$info[hide] eq 1'>checked='checked'</if>>是</label>
+                <label class="radio <if condition='$info[hide] eq 0'>checked</if>"><input type="radio" name="hide" value="0" <if condition='$info[hide] eq 0'>checked='checked'</if>>否</label>
+            </p>
+        </div>
+        <div class="input-area">
+            <span class="">仅开发者模式可见</span>
+            <p style="display:inline-block;">
+                <label class="radio <if condition='$info[is_dev] eq 1'>checked</if>"><input type="radio" name="is_dev" value="1" <if condition='$info[is_dev] eq 1'>checked='checked'</if>>是</label>
+                <label class="radio <if condition='$info[is_dev] eq 0'>checked</if>"><input type="radio" name="is_dev" value="0" <if condition='$info[is_dev] eq 0'>checked='checked'</if>>否</label>
+            </p>
+        </div>
+        <div class="input-area input-long">
+            <span class="">说明</span>
+            <input type="text" class="form-control" name="tip" value="{$info.tip|default=''}">
+        </div>
+        <div class="btn-area">
+            <input class="ajax-post" type="submit" target-form="form" value="保 存"/>
+            <input type="button" onclick="javascript:history.back(-1);return false;" value="返 回"/>
+        </div>
+    </form>
+</section>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        Think.setValue("pid", {$info.pid|default = 0});
+        //Think.setValue("hide", {$info.hide|default = 0});
+        //Think.setValue("is_dev", {$info.is_dev|default = 0});
+ 
+        //radio
+        $('.form-group p label').on("click",function(){
+            $(this).attr('class', 'radio checked').siblings().attr('class','radio');
+            $(this).children("input").prop('checked', false) && $(this).children('input').prop('checked', true);      
+        });
+    </script>
+</block>

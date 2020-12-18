@@ -1,0 +1,69 @@
+<extend name="Public/map" />
+
+<block name="body">
+<style type="text/css">
+    .btn-block {
+        width: 100%;
+    }
+    .btn-default {
+        color: #333;
+        background-color: #fff;
+    }
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.428571429;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        border-color: #ccc;
+        border-radius: 4px;
+    }
+    .btn-block+.btn-block {
+        margin-top: 5px;
+    }
+</style>
+<div class="device-condition" style="box-shadow:unset;">
+    <h2>
+        <span>
+            菜单排序 [ <a href="{:U('index',array('pid'=>I('pid')))}">返回列表</a> ]
+        </span>
+    </h2>
+</div>
+<div class="">
+    <!-- 表单 -->
+    <form action="{:U('sort')}" method="post" class="form" role="form" >
+        <div class="">
+            <div class="sort_option col-md-9" style="width:75%;float:left;">
+                <select value="" size="10"  class="form-control" style="background:none;padding-right:0;width:426px;">
+                    <volist name="list" id="vo">
+                        <option class="ids" title="{$vo.title}" value="{$vo.id}">{$vo.title}</option>
+                    </volist>
+                </select>
+            </div>
+            <div class="form-group col-md-3 sort_btn" style="width:25%;float:left;">
+                <button class="btn btn-default btn-block top " type="button">第 一</button>
+                <button class="btn btn-default btn-block up  " type="button">上 移</button>
+                <button class="btn btn-default btn-block down " type="button">下 移</button>
+                <button class="btn btn-default btn-block bottom " type="button">最 后</button>
+            </div>
+        </div>
+        <div class="btn-area" style="clear:both;">
+            <br/>
+            <input type="hidden" name="ids">
+            <input class="btn btn-default sort_confirm  submit-btn" type="button" target-form="form" value="保 存"/>
+            <input class="btn btn-default sort_cancel  btn-return" type="button" url="{$Think.cookie.__forward__}" value="返 回"/>
+        </div>
+    </form>		
+</div>
+</block>
+
+<block name="script">
+<load href="__JS__/sb/sort.js" />
+</block>

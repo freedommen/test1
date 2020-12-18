@@ -1,0 +1,11 @@
+<ul>
+	<volist name="__MENU__.child" id="sub_menu">
+		<li>
+			<if condition="$sub_menu.class neq 'on'">
+				<a href="{$sub_menu.url|U}">{$sub_menu.name}</a>
+			<else />
+				<a href="javascript:;" class="active">{$sub_menu.name}</a>
+			</if>
+        </li>
+    </volist>
+</ul>

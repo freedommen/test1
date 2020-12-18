@@ -1,0 +1,56 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>{$title}</h2>
+	</div>
+	
+	<!-- 数据列表 -->
+	<div class="panel panel-default">
+		<div class='panel-heading'>
+			<div class='fl'>
+				<if condition="$addbutton">
+					<button class="btn btn-default btn-add " url="{$addbutton}" >新 增</button>
+				</if>
+				<if condition="$delbutton">
+					<button class="btn btn-default ajax-post confirm" url="{$delbutton}" target-form="ids">删 除</button>
+				</if>
+				<if condition="isset( $_GET['pid'] ) && $_GET['pid']">
+					<button onclick="javascript:history.back(-1);return false;" class="btn btn-default return-btn">返 回</button>
+				</if>
+			</div>
+		</div>
+		
+		<table id="{$id|default=''}" class="table table-striped table-bordered table-hover dataTables">
+		    <thead>
+		        <tr>
+		        	<if condition="$delbutton">
+						<th style="width:3%" class="row-selected">
+							<input class="checkbox check-all" type="checkbox">
+						</th> 
+					</if>
+					<th style="width:100px;text-align:center" class="">序号</th>
+					<th style="width:600px;" class="">名称</th>
+					<th class="">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<volist name="list" id="vo">
+					<tr>
+						<if condition="$delbutton">
+							<td><input class="ids row-selected" type="checkbox" name="id[]" value="{$vo[$index]}"></td>
+						</if>
+						<th style="width:100px;text-align:center" class="">{$vo[$index]}</th>
+						<if condition="isset( $_GET['pid'] ) && $_GET['pid']">
+							<th class=""><a href="javascript:void(0)">{$vo.title}</a></th>
+						<else/>
+							<th class=""><a href="{:U($thisUrl,array('pid'=>$vo[$index]))}">{$vo.title}</a></th>
+						</if>
+						<th class=""><a href="{:U($editUrl,array('id'=>$vo[$index]))}">修改</a> - <a href="{:U($delUrl,array('id'=>$vo[$index]))}">删除</a></th>
+					</tr>
+				</volist>
+		    </tbody>
+	    </table>
+	</div>
+</block>

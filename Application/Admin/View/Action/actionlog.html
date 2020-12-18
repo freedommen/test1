@@ -1,0 +1,55 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<link rel="stylesheet" type="text/css" href="__CSS__/new/scenic-list.css">
+<div class="scenic admin">
+    <!--<form>
+        名称&nbsp;&nbsp;&nbsp;<input type="text"/>
+        位置&nbsp;&nbsp;&nbsp;<select id="city">
+            <option>全部</option>
+        </select>
+        <select id="prov_citi">
+            <option>全部</option>
+        </select>
+        <select id="citi_name">
+            <option>全部</option>
+        </select>
+        星级&nbsp;&nbsp;&nbsp;<select id="xj">
+            <option>全部</option>
+            <option>5星</option>
+            <option>4星</option>
+            <option>3星</option>
+        </select>
+        <input type="button" value="搜索"/>
+    </form>-->
+    <p class="new-user"><a href="scenic-edit.html">行为日志</a></p>
+    <div class="form-group">
+        <button class="btn btn-default ajax-get confirm" url="{:U('clear')}">清 空</button>
+        <button class="btn btn-default ajax-post confirm" target-form="ids" url="{:U('remove')}">删 除</button>  
+    </div>
+    <table>
+        <tr>
+            <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+            <!--<th style="width:12%">编号</th>-->
+            <th style="width:12%">行为名称</th>
+            <th style="width:12%">执行者</th>
+            <th style="width:32%">执行时间</th>
+            <th style="width:20%">操作</th>
+        </tr>
+        <volist name="_list" id="vo">
+        <tr>
+            <td><input class="ids" type="checkbox" name="ids[]" value="{$vo.id}" /></td>
+            <!--<td>{$vo.id} </td>-->
+            <td>{:get_action($vo['action_id'],'title')}</td>
+            <td>{:get_nickname($vo['user_id'])}</td>
+            <td><span>{$vo.create_time|time_format}</span></td>
+            <td><a href="{:U('Action/edit?id='.$vo['id'])}">详细</a>
+                <a class="confirm ajax-get " href="{:U('Action/remove?ids='.$vo['id'])}">删除</a>
+            </td>
+        </tr>
+        </volist> 
+    </table>
+</div>					
+</block>
+
+<block name="script"></block>

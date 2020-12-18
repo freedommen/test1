@@ -1,0 +1,122 @@
+<!-- 管理员用户组新增和编辑页面 -->
+<extend name="Public/map" />
+
+<block name="body">
+    <section class="jqgl">
+        <div class="device-condition" style="padding:0;box-shadow:unset;">
+            <ul class="nav nav-tabs ">
+                <!--<li><a href="{:U('AuthManager/category',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')))}">分类授权</a></li>
+                <li><a href="{:U('AuthManager/user',array('group_name'=>I('group_name') ,'group_id'=> I('group_id')))}">成员授权</a></li>-->
+                <li class="fr">
+                    <select name="group" class="form-control" style="width:86px;">
+                        <volist name="auth_group" id="vo">
+                            <option value="{:U('AuthManager/access',array('group_name'=>$vo['title'],'group_id'=>$vo['id']))}" <eq name="vo['id']" value="$this_group['id']">selected</eq> >{$vo.title}</option>
+                        </volist>
+                    </select>
+                </li>
+            </ul>
+        </div>
+        <!-- 访问授权 -->
+        <form action="{:U('AuthManager/writeGroup')}" enctype="application/x-www-form-urlencoded" method="POST" class="form-inline auth-form" role="form" >
+            <volist name="node_list" id="node" >
+            <dl class="checkmod ">
+                <div class="panel panel-default" style="padding:24px 0 0 0;margin-bottom:0;">
+                  <div class="panel-heading" style="margin-bottom:0;background:#eee;">
+                    <dt class="hd" style="line-height:40px">              
+                        <label class="checkbox"><input class="auth_rules rules_all" type="checkbox" name="rules[]" value="<?php echo $main_rules[$node['url']] ?>">&nbsp;&nbsp;{$node.title}管理</label>
+                    </dt>
+                  </div>
+                  <div class="panel-body">
+                    <dd class="bd">
+                        <present name="node['child']">
+                        <volist name="node['child']" id="child" >
+                            <div class="rule_check  ">
+                                <div>
+                                    <label class="checkbox" style="margin-left:40px;" <notempty name="child['tip']">data-toggle="tooltip" data-placement="top"  title='{$child.tip}'&nbsp;</notempty>>
+                                      &nbsp;&nbsp;<input class="auth_rules rules_row" type="checkbox" name="rules[]" value="<?php echo $auth_rules[$child['url']] ?>"/>&nbsp;&nbsp;{$child.title}
+                                    </label>
+                                </div>
+                                <notempty name="child['operator']">
+                                   <span class="child_row">
+                                       <volist name="child['operator']" id="op">
+                                           <label class="checkbox" style="margin-left:80px;" <notempty name="op['tip']">data-toggle="tooltip" data-placement="top" title='{$op.tip}'</notempty>>
+                                               &nbsp;&nbsp;<input class="auth_rules" type="checkbox" name="rules[]"
+                                               value="<?php echo $auth_rules[$op['url']] ?>"/>&nbsp;&nbsp;{$op.title}&nbsp;&nbsp;
+                                           </label>
+                                       </volist>
+                                   </span>
+                                </notempty>
+                            </div>
+                        </volist>
+                        </present>
+                    </dd>
+                  </div>
+                </div>
+            </dl>
+            </volist>
+            <div class="btn-area">
+                <br/>
+                <input class="ajax-post" type="submit" target-form="form" value="保 存"/>
+                <input type="button" onclick="javascript:history.back(-1);return false;" value="返 回"/>
+            </div> 
+        </form>
+    </section>
+</div>		
+</block>
+
+<block name="script">
+<link rel="stylesheet" type="text/css" href="__STATIC__/qtip/jquery.qtip.min.css" media="all">
+<script type="text/javascript" src="__STATIC__/qtip/jquery.qtip.min.js"></script>
+
+<script type="text/javascript" charset="utf-8">
++function($){
+    var rules = [{$this_group.rules}];
+    $('.auth_rules').each(function(){
+        if( $.inArray( parseInt(this.value,10),rules )>-1 ){
+            $(this).prop('checked',true);
+        }
+        if(this.value==''){
+            $(this).closest('span').remove();
+        }
+    });
+
+    //全选节点
+    $('.rules_all').on('change',function(){
+        $(this).closest('dl').find('dd').find('input').prop('checked',this.checked);
+    });
+    $('.rules_row').on('change',function(){
+        $(this).closest('.rule_check').find('.child_row').find('input').prop('checked',this.checked);
+    });
+
+    $('.checkbox').each(function(){
+        $(this).qtip({
+            content: {
+                text: $(this).attr('title'),
+                title: $(this).text()
+            },
+            position: {
+                my: 'bottom center',
+                at: 'top center',
+                target: $(this)
+            },
+            style: {
+                classes: 'qtip-dark',
+                tip: {
+                    corner: true,
+                    mimic: false,
+                    width: 10,
+                    height: 10
+                }
+            }
+        });
+    });
+
+    $('select[name=group]').change(function(){
+        location.href = this.value;
+    });
+    
+
+}(jQuery);
+     
+</script>
+</block>

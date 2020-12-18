@@ -1,0 +1,48 @@
+<extend name="Public/map" />
+<block name="body">
+    <div class="device-condition">
+        <input type="button" url="{:U('createGroup')}" id="add-group" class="btn btn-default btn-add " value="新增"/>
+        <input type="button" url="{:U('changestatus',array('method'=>'resumeGroup'))}" class="btn btn-default ajax-post confirm" target-form="ids" value="启用"/>
+        <input type="button" url="{:U('changestatus',array('method'=>'forbidGroup'))}" class="btn btn-default ajax-post confirm" target-form="ids" value="禁用"/>
+        <input type="button" url="{:U('changestatus',array('method'=>'deleteGroup'))}" class="btn btn-default ajax-post confirm" target-form="ids" value="删除"/> 
+    </div>
+    <table class="device-list">
+        <thead>
+            <tr>
+                <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+                <th class="">用户组</th>
+                <th class="">描述</th>
+                <th class="">授权</th>
+                <th class="">状态</th>
+                <th class="">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="_list" id="vo">
+            <tr>
+                <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+                <td><a href="{:U('AuthManager/editgroup?id='.$vo['id'])}">{$vo.title}</a> </td>
+                <td><span>{:mb_strimwidth($vo['description'],0,60,"...","utf-8")}</span></td>
+                <td><a href="{:U('AuthManager/access?group_name='.$vo['title'].'&group_id='.$vo['id'])}" >访问授权</a>
+                    <!--<a href="{:U('AuthManager/category?group_name='.$vo['title'].'&group_id='.$vo['id'])}" >分类授权</a>
+                    <a href="{:U('AuthManager/user?group_name='.$vo['title'].'&group_id='.$vo['id'])}" >成员授权</a>-->
+                </td>
+                <td>{$vo.status_text}</td>
+                <td><eq name="vo.status" value="1">
+                    <a href="{:U('AuthManager/changeStatus?method=forbidGroup&id='.$vo['id'])}" class="ajax-get confirm">禁用</a>
+                    <else/>
+                    <a href="{:U('AuthManager/changeStatus?method=resumeGroup&id='.$vo['id'])}" class="ajax-get confirm">启用</a>
+                    </eq>
+                    <a href="{:U('AuthManager/editgroup?id='.$vo['id'])}">编辑</a>
+                    <a href="{:U('AuthManager/changeStatus?method=deleteGroup'.$vo['id'])}" class="confirm ajax-get">删除</a>
+                </td>
+            </tr>
+            </volist>                    
+        </tbody>
+    </table>
+    <neq name="_page" value="">
+    <div class="page">
+        {$_page|default=''}
+    </div> 
+    </neq>
+</block>

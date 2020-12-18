@@ -1,0 +1,39 @@
+<extend name="Public/map" />
+<block name="body">
+    <table class="device-list">
+        <thead>
+            <tr>                    
+                <!--<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>-->
+                <th class="">UID</th>
+                <th class="">昵称</th>
+                <th class="">登录次数</th>
+                <th class="">最后登录时间</th>
+                <th class="">最后登录IP</th>
+                <th class="">状态</th>
+                <th class="">操作</th>        
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="_list" id="vo">
+            <tr>
+                <!--<td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>-->
+                <td>{$vo.id} </td>
+                <td>{$vo.nickname}</td>
+                <td>{$vo.login}</td>
+                <td><span>{$vo.last_login_time|time_format}</span></td>
+                <td><span>{:long2ip($vo['last_login_ip'])}</span></td>
+                <td>{$vo.status_text}</td>
+                <td>
+                    <a href="{:U('User/updatePassword?uid='.$vo['id'])}" class="authorize">修改密码</a>
+                    <a href="{:U('User/updateNickname?uid='.$vo['id'])}" class="authorize">修改昵称</a>
+                </td>
+            </tr>
+            </volist>
+        </tbody>
+    </table>
+    <neq name="_page" value="">
+    <div class="page">
+        {$_page|default=''}
+    </div> 
+    </neq>
+</block>

@@ -1,0 +1,161 @@
+.user{
+	padding:27px;
+}
+.user form{
+	border:1px solid #dcdcdc;
+	padding:22px;
+}
+.user form p{
+	margin-bottom: 20px;
+}
+.user form p.tj{
+	text-align: center;
+}
+.user form input[type="text"]{
+	width:143px;
+	height:28px;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	outline: none;
+	border:1px solid #dcdcdc;
+	margin-right: 30px;
+	text-indent: 18px;
+}
+.user form select{
+	width: 114px;
+	height: 30px;
+	line-height: 30px;
+	padding-right: 20px;
+	text-indent: 12px;
+	text-align: left;
+	vertical-align: middle;
+	border: 1px solid #dcdcdc;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline:none;
+	margin-right: 88px;
+	background: url(../img/info-img-1.png) no-repeat right 0;
+}
+.user form input[type="button"]{
+	width:76px;
+	height:38px;
+	margin:0 10px;
+	background: #2579e9;
+	border:none;
+	outline: none;
+	color:#fff;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.user form input[type="button"].on{
+	background:#09acde;
+}
+.new-user a{
+	padding:2px 15px;
+	display: inline-block;
+	background: #2579e9;
+	color:#fff;
+	font-size: 14px;
+	text-align: center;
+	line-height: 26px;
+	border-radius:5px;
+	margin-right:10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.user table{
+	width:100%;
+	margin-top:24px;
+	border-collapse: collapse;
+	border: none;
+	font-size: 14px;
+}
+.user table tr{
+	border:1px solid #dcdcdc;
+}
+.user table th{
+	background:#f8f8f8;
+	height:52px;
+}
+.user table td{
+	text-align: center;
+	height:52px;
+}
+.user table td a{
+	color:#2579e9;
+}
+.user table td a:hover{
+	text-decoration: underline;
+}
+
+/*编辑*/
+.edit{
+	padding:0;
+}
+.edit h2{
+	height:72px;
+	line-height: 72px;
+	border-bottom: 1px solid #e8e5e5;
+}
+.edit h2 a{
+	width:236px;
+	height:100%;
+	display: block;
+	text-align: center;
+	font-weight: normal;
+	border-bottom: 2px solid #2579e9;
+}
+.edit form{
+	padding:40px 38px;
+	border:0;
+}
+.edit form span{
+	min-width:170px;
+	text-align: left;
+    display: inline-block;
+    padding-left: 24px;
+}
+.edit form div.avatar span{
+	position: relative;
+	top:-80px;
+}
+.edit form span.on{
+	background: url(../img/info-icon-1.png) no-repeat 0 6px;
+}
+.edit form span.bz{
+	position: relative;
+	left: 0;
+	top:-100px;
+}
+.edit form span.xxdz{
+	position: relative;
+	left: 0;
+	top:-40px;
+}
+.edit form input[type="text"]{
+	width:422px;
+	height:36px;
+}
+.edit form a.djsc{
+	width:96px;
+	height:36px;
+	font-size: 14px;
+	text-align: center;
+	line-height: 36px;
+	display: inline-block;
+	border-radius: 5px;
+	-webkit-border-radius:5px;
+	border:1px solid #d2d2d2;
+}
+.edit form textarea{
+	max-width: 439px;
+	border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    outline: none;
+    text-indent: 18px;
+    padding: 10px 0;
+}
